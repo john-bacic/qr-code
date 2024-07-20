@@ -29,3 +29,23 @@ function newMessage() {
   document.getElementById('qr-code').innerHTML = ''
   document.getElementById('message').value = ''
 }
+
+function focusTextarea() {
+  const textarea = document.getElementById('message')
+  textarea.focus()
+
+  // Attempt to show keyboard on mobile devices
+  if (
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    )
+  ) {
+    setTimeout(function () {
+      textarea.click()
+      textarea.focus()
+    }, 100)
+  }
+}
+
+// Call the function when the page loads
+window.onload = focusTextarea
