@@ -11,11 +11,11 @@
     <div class="container">
         <!-- <h1>QR Code Messenger</h1> -->
         <div id="message-input">
-            <textarea id="message" placeholder="Enter your message here"></textarea>
+            <textarea id="message" autofocus placeholder="Enter your message here"></textarea>
             <button onclick="generateQR()">Generate QR Code</button>
         </div>
         <div id="qr-code"></div>
-        <button id="new-message" style="display: none;" onclick="newMessage()">New Message</button>
+        <button id="new-message" onclick="newMessage()" style="display: none;">New Message</button>
     </div>
     <script src="script.js"></script>
 </body>
