@@ -61,10 +61,28 @@ button {
 .message-display #scanned-message {
     font-family: 'Fredoka One', cursive;
     font-size: 42px;
+    font-weight: 800;
+    line-height: normal;
+    text-shadow: 
+        -1px -1px 0 #FFF,
+        1px -1px 0 #FFF,
+        -1px 1px 0 #FFF,
+        1px 1px 0 #FFF,
+        2px 2px 4px rgba(0, 0, 0, 0.3);
+
+
+
     margin: 40px auto;
     word-wrap: break-word;
     max-width: 90%;
     color: rgb(55, 55, 55);
     padding: 0 20px;
-    box-sizing: border-box;
+    box-sizing: border-box; 
+
+
+
+
 }
+
+
+
