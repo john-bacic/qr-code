@@ -53,14 +53,6 @@ label {
     font-weight: bold;
 }
 
-textarea {
-    width: 90%;
-    height: 150px;
-    margin-bottom: 10px;
-    font-size: 18px;
-    padding: 10px;
-    line-height: 1.5;
-}
 
 button {
     background-color: #5c4caf;
@@ -144,8 +136,6 @@ button:active {
     overflow-wrap: break-word;
 
 }
-
-
 
 textarea {
     width: 90%;
