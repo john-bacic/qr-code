@@ -62,13 +62,36 @@ function displayMessage() {
   const urlParams = new URLSearchParams(window.location.search)
   const message = urlParams.get('message')
   const scannedMessage = document.getElementById('scanned-message')
+  const replyButton = document.querySelector('.reply-button')
+
+  // Hide the reply button initially
+  if (replyButton) {
+    replyButton.classList.add('hidden')
+  }
 
   // Configuration for Typed.js
   const typedConfig = {
     typeSpeed: 50,
     showCursor: false,
     onComplete: (self) => {
-      // Optional: Add any actions you want to perform after the animation is complete
+      // Show the reply button after animation is complete
+      if (replyButton) {
+        const randomRotation = Math.random() * 6 - 3
+        replyButton.style.setProperty(
+          '--random-rotation',
+          `${randomRotation}deg`
+        )
+        replyButton.classList.remove('hidden')
+
+        // Apply final rotation after animations complete
+        replyButton.addEventListener(
+          'animationend',
+          () => {
+            replyButton.style.transform = `rotate(${randomRotation}deg)`
+          },
+          { once: true }
+        )
+      }
     },
   }
 

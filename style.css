@@ -177,6 +177,37 @@ textarea:focus {
     transform: scale(1.02);
 }
 
-
+@keyframes scaleIn {
+    0% {
+      transform: scale(0) rotate(var(--random-rotation));
+    }
+    100% {
+      transform: scale(1) rotate(var(--random-rotation));
+    }
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0) scale(1) rotate(var(--random-rotation));
+    }
+    40% {
+      transform: translateY(-20px) scale(1.1) rotate(var(--random-rotation));
+    }
+    60% {
+      transform: translateY(-10px) scale(1.05) rotate(var(--random-rotation));
+    }
+  }
+  
+  .reply-button {
+    --random-rotation: 0deg;
+    animation: 
+      scaleIn 1.0s cubic-bezier(0.17, 0.89, 0.32, 1.49),
+      bounce 1.3s ease-in-out 0.1s ;
+    transform-origin: center bottom;
+  }
+  
+  .reply-button.hidden {
+    display: none;
+  }
 
 
