@@ -30,3 +30,25 @@ function newMessage() {
   document.getElementById('message').value = ''
 }
 
+function displayMessage() {
+  const urlParams = new URLSearchParams(window.location.search)
+  const message = urlParams.get('message')
+  const scannedMessage = document.getElementById('scanned-message')
+
+  if (message) {
+    let index = 0
+    function animateText() {
+      if (index < message.length) {
+        scannedMessage.innerHTML += message.charAt(index)
+        index++
+        setTimeout(animateText, 100) // Adjust the delay (in milliseconds) between each letter
+      }
+    }
+    animateText()
+  } else {
+    scannedMessage.textContent = 'No message found.'
+  }
+}
+
+// Call this function when the message.html page loads
+window.onload = displayMessage
