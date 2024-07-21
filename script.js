@@ -2,11 +2,15 @@ document.addEventListener('DOMContentLoaded', function () {
   const quickReplyButtons = document.querySelectorAll('.quick-reply')
   const messageTextarea = document.getElementById('message')
 
+  function handleQuickReply(event) {
+    const button = event.currentTarget
+    const text = button.getAttribute('data-text')
+    messageTextarea.value = text
+  }
+
   quickReplyButtons.forEach((button) => {
-    button.addEventListener('click', function () {
-      const text = button.getAttribute('data-text')
-      messageTextarea.value = text
-    })
+    button.addEventListener('click', handleQuickReply)
+    button.addEventListener('touchend', handleQuickReply)
   })
 })
 
