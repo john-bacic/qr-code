@@ -135,31 +135,37 @@ window.onload = function () {
   applyRandomRotation()
 }
 
-// Apply rotation when the page loads
-// window.addEventListener('load', applyRandomRotation)
-
-// Call this function when the message.html page loads
-// window.onload = displayMessage
-
-// Add this function to your existing script.js
 function setupCameraButton() {
   const openCameraButton = document.getElementById('openCamera')
   const cameraInput = document.getElementById('cameraInput')
 
   if (openCameraButton && cameraInput) {
     openCameraButton.addEventListener('click', function () {
-      cameraInput.click()
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices
+          .getUserMedia({ video: true })
+          .then(function (stream) {
+            // Camera access granted, now open the file input
+            cameraInput.click()
+          })
+          .catch(function (error) {
+            console.error('Camera access denied:', error)
+            // If camera access is denied, still open the file input
+            // This allows the user to select an existing photo
+            cameraInput.click()
+          })
+      } else {
+        // If getUserMedia is not supported, fallback to file input
+        cameraInput.click()
+      }
     })
 
     cameraInput.addEventListener('change', function (event) {
       const file = event.target.files[0]
       if (file) {
-        // Here you can handle the captured image
-        // For example, you could display it or send it to a server
+        // Handle the captured image
         console.log('Image captured:', file)
-
-        // You might want to add code here to process the QR code in the image
-        // This would require a QR code reading library
+        // You can add code here to process or display the image
       }
     })
   }
