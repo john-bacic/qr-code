@@ -128,28 +128,28 @@ function applyRandomRotationToMessageContainer() {
   }
 }
 
-// Combine all onload functions
-window.onload = function () {
-  displayMessage()
-  applyRandomRotationToMessageContainer()
-  applyRandomRotation()
-}
-
 function setupCameraButton() {
   const openCameraButton = document.getElementById('openCamera')
-  const video = document.createElement('video')
-  const canvasElement = document.createElement('canvas')
-  const canvas = canvasElement.getContext('2d')
+  const cameraInput = document.getElementById('cameraInput')
 
-  let scanning = false
+  openCameraButton.addEventListener('click', function () {
+    // Open camera.html in a new window or tab
+    window.open('camera.html', '_blank')
+  })
 
-  openCameraButton.addEventListener('click', async function () {
-    if (scanning) {
-      stopScanning()
-    } else {
-      startScanning()
+  // Keep the file input handler if you still want to support file uploads
+  cameraInput.addEventListener('change', function (event) {
+    const file = event.target.files[0]
+    if (file) {
+      // Handle the file (e.g., read QR code from image)
+      // Implement this part if needed
     }
   })
+}
+window.onload = function () {
+  setupCameraButton()
+
+  //// camera page
 
   async function startScanning() {
     try {
@@ -205,6 +205,14 @@ function setupCameraButton() {
     window.location.href = data
   }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  const openCameraButton = document.getElementById('openCamera')
+
+  openCameraButton.addEventListener('click', function () {
+    window.open('camera.html', '_blank')
+  })
+})
 
 // Modify your window.onload function to include setupCameraButton
 window.onload = function () {
