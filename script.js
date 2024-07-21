@@ -128,82 +128,49 @@ function applyRandomRotationToMessageContainer() {
   }
 }
 
+// Combine all onload functions
+window.onload = function () {
+  displayMessage()
+  applyRandomRotationToMessageContainer()
+  applyRandomRotation()
+}
+
 function setupCameraButton() {
   const openCameraButton = document.getElementById('openCamera')
-  const cameraInput = document.getElementById('cameraInput')
+  const video = document.createElement('video')
+  const canvas = document.createElement('canvas')
 
-  openCameraButton.addEventListener('click', function () {
-    // Open camera.html in a new window or tab
-    window.open('camera.html', '_blank')
-  })
-
-  // Keep the file input handler if you still want to support file uploads
-  cameraInput.addEventListener('change', function (event) {
-    const file = event.target.files[0]
-    if (file) {
-      // Handle the file (e.g., read QR code from image)
-      // Implement this part if needed
-    }
-  })
-}
-window.onload = function () {
-  setupCameraButton()
-
-  //// camera page
-
-  async function startScanning() {
+  openCameraButton.addEventListener('click', async function () {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: 'environment' },
-      })
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true })
       video.srcObject = stream
-      video.setAttribute('playsinline', true) // required to tell iOS safari we don't want fullscreen
       video.play()
-      requestAnimationFrame(tick)
-      scanning = true
+
+      // Wait for the video to load metadata
+      await new Promise((resolve) => (video.onloadedmetadata = resolve))
+
+      // Set canvas dimensions to match the video
+      canvas.width = video.videoWidth
+      canvas.height = video.videoHeight
+
+      // Draw the video frame on the canvas
+      canvas.getContext('2d').drawImage(video, 0, 0)
+
+      // Convert canvas to image
+      const img = document.createElement('img')
+      img.src = canvas.toDataURL('image/jpeg')
+      img.style.maxWidth = '100%'
+      document.body.appendChild(img)
+
+      // Stop the video stream
+      video.srcObject.getTracks().forEach((track) => track.stop())
     } catch (error) {
       console.error('Error accessing the camera:', error)
       alert(
         "Unable to access the camera. Please make sure you've granted the necessary permissions."
       )
     }
-  }
-
-  function stopScanning() {
-    video.srcObject.getTracks().forEach((track) => track.stop())
-    scanning = false
-  }
-
-  function tick() {
-    if (video.readyState === video.HAVE_ENOUGH_DATA) {
-      canvasElement.height = video.videoHeight
-      canvasElement.width = video.videoWidth
-      canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height)
-      var imageData = canvas.getImageData(
-        0,
-        0,
-        canvasElement.width,
-        canvasElement.height
-      )
-      var code = jsQR(imageData.data, imageData.width, imageData.height, {
-        inversionAttempts: 'dontInvert',
-      })
-      if (code) {
-        console.log('Found QR code', code.data)
-        handleQRCode(code.data)
-        stopScanning()
-        return
-      }
-    }
-    if (scanning) {
-      requestAnimationFrame(tick)
-    }
-  }
-
-  function handleQRCode(data) {
-    // Assuming the QR code contains a URL to the message page
-    window.location.href = data
-  }
+  })
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -212,12 +179,6 @@ document.addEventListener('DOMContentLoaded', function () {
   openCameraButton.addEventListener('click', function () {
     window.open('camera.html', '_blank')
   })
-})
-
-const closeCameraButton = document.getElementById('closeCamera')
-
-closeCameraButton.addEventListener('click', function () {
-  window.location.href = 'index.html'
 })
 
 // Modify your window.onload function to include setupCameraButton
