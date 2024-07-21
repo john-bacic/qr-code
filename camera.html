@@ -6,28 +6,49 @@
     <link rel="stylesheet" href="style.css">
     <title>QR Code Scanner</title>
     <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
         body {
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
+            background-color: #000;
+        }
+        #cameraContainer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            cursor: pointer;
         }
         #video-container {
-            width: 100%;
-            max-width: 500px;
-            margin-bottom: 20px;
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
         #qr-video {
-            width: 100%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
             height: auto;
+            object-fit: cover;
         }
         #result {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #F6FF00;
             font-size: 18px;
-            margin-top: 20px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
         }
     </style>
 </head>
