@@ -63,7 +63,8 @@ button {
     font-family: "Fredericka the Great", serif;
     font-weight: 400;
     font-style: normal;
-
+    font-size: 42px;
+    
     margin: 48px auto;
     max-width: 100%;
     padding: 0 20px;
