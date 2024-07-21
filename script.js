@@ -35,17 +35,25 @@ function displayMessage() {
   const message = urlParams.get('message')
   const scannedMessage = document.getElementById('scanned-message')
 
+  // Configuration for Typed.js
+  const typedConfig = {
+    typeSpeed: 50,
+    showCursor: false,
+    onComplete: (self) => {
+      // Optional: Add any actions you want to perform after the animation is complete
+    },
+  }
+
   if (message) {
     new Typed('#scanned-message', {
+      ...typedConfig,
       strings: [message],
-      typeSpeed: 50,
-      showCursor: false,
-      onComplete: (self) => {
-        // Optional: Add any actions you want to perform after the animation is complete
-      },
     })
   } else {
-    scannedMessage.textContent = 'No message found.'
+    new Typed('#scanned-message', {
+      ...typedConfig,
+      strings: ['No message found.'],
+    })
   }
 }
 
