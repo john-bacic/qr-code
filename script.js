@@ -135,49 +135,11 @@ window.onload = function () {
   applyRandomRotation()
 }
 
-function setupCameraButton() {
-  const openCameraButton = document.getElementById('openCamera')
-  const video = document.createElement('video')
-  const canvas = document.createElement('canvas')
-
-  openCameraButton.addEventListener('click', async function () {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true })
-      video.srcObject = stream
-      video.play()
-
-      // Wait for the video to load metadata
-      await new Promise((resolve) => (video.onloadedmetadata = resolve))
-
-      // Set canvas dimensions to match the video
-      canvas.width = video.videoWidth
-      canvas.height = video.videoHeight
-
-      // Draw the video frame on the canvas
-      canvas.getContext('2d').drawImage(video, 0, 0)
-
-      // Convert canvas to image
-      const img = document.createElement('img')
-      img.src = canvas.toDataURL('image/jpeg')
-      img.style.maxWidth = '100%'
-      document.body.appendChild(img)
-
-      // Stop the video stream
-      video.srcObject.getTracks().forEach((track) => track.stop())
-    } catch (error) {
-      console.error('Error accessing the camera:', error)
-      alert(
-        "Unable to access the camera. Please make sure you've granted the necessary permissions."
-      )
-    }
-  })
-}
-
 document.addEventListener('DOMContentLoaded', function () {
   const openCameraButton = document.getElementById('openCamera')
 
   openCameraButton.addEventListener('click', function () {
-    window.open('camera.html', '_self')
+    window.location.href = 'camera.html'
   })
 })
 

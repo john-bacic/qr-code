@@ -70,6 +70,7 @@
         const video = document.getElementById('qr-video');
         const resultDiv = document.getElementById('result');
         const cameraContainer = document.getElementById('cameraContainer');
+        
 
         cameraContainer.addEventListener('click', function() {
             // window.location.href = 'index.html';
@@ -138,6 +139,10 @@
                 video.srcObject.getTracks().forEach(track => track.stop());
             }
         }
+
+        document.getElementById('cameraContainer').addEventListener('click', function() {
+    window.location.href = 'index.html';
+  });
 
         window.onload = startCamera;
     </script>
