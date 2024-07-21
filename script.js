@@ -97,8 +97,23 @@ function applyRandomRotation() {
   })
 }
 
+function applyRandomRotationToMessageContainer() {
+  const container = document.getElementById('message-container')
+  if (container) {
+    const randomRotation = Math.random() * 6 - 3 // Random number between -2 and 2
+    container.style.transform = `rotate(${randomRotation}deg)`
+  }
+}
+
+// Combine all onload functions
+window.onload = function () {
+  displayMessage()
+  applyRandomRotationToMessageContainer()
+  applyRandomRotation()
+}
+
 // Apply rotation when the page loads
-window.addEventListener('load', applyRandomRotation)
+// window.addEventListener('load', applyRandomRotation)
 
 // Call this function when the message.html page loads
-window.onload = displayMessage
+// window.onload = displayMessage

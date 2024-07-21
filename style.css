@@ -105,8 +105,8 @@ button:before {
 }
 
 button:hover {
-    transform: translate(-10px, -10px);
-    box-shadow: 10px 10px 0 #00000076;
+    /* transform: translateY(-5px); */
+    box-shadow: 5px 10px 0 #00000076;
 }
 
 button:hover:before {
@@ -114,13 +114,15 @@ button:hover:before {
 }
 
 button:active {
-    transform: translate(5px, 5px);
-    box-shadow: 0px 0px 0 #000;
+    /* transform: translateY(0); */
+    box-shadow: 5px 5px 0 #000;
 }
 
 #qr-code {
     margin-top: 10px;
 }
+
+
 
 #qr-code img {
     max-width: 100%;
@@ -152,6 +154,11 @@ button:active {
     overflow-wrap: break-word;
 
 }
+
+.message-display {
+    transition: transform 0.3s ease;
+    transform-origin: center center;
+  }
 
 textarea {
     width: 90%;
