@@ -141,31 +141,33 @@ function setupCameraButton() {
 
   if (openCameraButton && cameraInput) {
     openCameraButton.addEventListener('click', function () {
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices
-          .getUserMedia({ video: true })
-          .then(function (stream) {
-            // Camera access granted, now open the file input
-            cameraInput.click()
-          })
-          .catch(function (error) {
-            console.error('Camera access denied:', error)
-            // If camera access is denied, still open the file input
-            // This allows the user to select an existing photo
-            cameraInput.click()
-          })
-      } else {
-        // If getUserMedia is not supported, fallback to file input
-        cameraInput.click()
-      }
+      cameraInput.click()
     })
 
     cameraInput.addEventListener('change', function (event) {
       const file = event.target.files[0]
       if (file) {
-        // Handle the captured image
-        console.log('Image captured:', file)
-        // You can add code here to process or display the image
+        console.log('Media captured:', file)
+
+        // Handle image file
+        if (file.type.startsWith('image/')) {
+          const reader = new FileReader()
+          reader.onload = function (e) {
+            const img = document.createElement('img')
+            img.src = e.target.result
+            img.style.maxWidth = '100%'
+            document.body.appendChild(img)
+          }
+          reader.readAsDataURL(file)
+        }
+        // Handle video file
+        else if (file.type.startsWith('video/')) {
+          const video = document.createElement('video')
+          video.src = URL.createObjectURL(file)
+          video.controls = true
+          video.style.maxWidth = '100%'
+          document.body.appendChild(video)
+        }
       }
     })
   }
