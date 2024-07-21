@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -57,8 +59,11 @@ button {
 }
 
 .message-display #scanned-message {
-    font-size: 36px;
+    font-family: 'Fredoka One', cursive;
+    text-align: center;
+    font-size: 42px;
     margin: 40px 0;
     word-wrap: break-word;
+    max-width: 100%;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
-
