@@ -23,22 +23,16 @@
 
 
 
-    <div class="container">
-        
-        <!-- <h1>QR Code Messenger</h1> -->
+      <div class="container">
         <div id="message-input">
-            <textarea id="message" placeholder="Write a note here!"></textarea>
-            <button onclick="generateQR()">Make QR Code</button>
+          <textarea id="message" placeholder="Write a note here!"></textarea>
+          <button onclick="generateQR()" class="new-message">Make QR Code</button>
         </div>
         <div id="qr-code"></div>
         <button id="new-message" onclick="newMessage()" style="display: none;" class="new-message-btn">New Message</button>
+      </div>
 
-
-
-        
-    </div>
-
-
+  
 
 
     <script src="script.js"></script>

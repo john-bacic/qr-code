@@ -108,18 +108,6 @@ function displayMessage() {
   }
 }
 
-function applyRandomRotation() {
-  const buttons = document.querySelectorAll('button:not(#openCamera)')
-  buttons.forEach((button) => {
-    const randomRotation = Math.random() * 6 - 3 // Random number between -3 and 3
-    if (button.classList.contains('new-message-btn')) {
-      button.style.transform = `translateX(-50%) rotate(${randomRotation}deg)`
-    } else {
-      button.style.transform = `rotate(${randomRotation}deg)`
-    }
-  })
-}
-
 function applyRandomRotationToMessageContainer() {
   const container = document.getElementById('message-container')
   if (container) {
@@ -132,7 +120,6 @@ function applyRandomRotationToMessageContainer() {
 window.onload = function () {
   displayMessage()
   applyRandomRotationToMessageContainer()
-  applyRandomRotation()
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -142,11 +129,3 @@ document.addEventListener('DOMContentLoaded', function () {
     window.location.href = 'camera.html'
   })
 })
-
-// Modify your window.onload function to include setupCameraButton
-window.onload = function () {
-  displayMessage()
-  applyRandomRotationToMessageContainer()
-  applyRandomRotation()
-  setupCameraButton()
-}
