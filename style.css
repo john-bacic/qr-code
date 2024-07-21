@@ -61,7 +61,6 @@ button {
 
 .message-display #scanned-message {
     font-family: 'Fredoka One', cursive;
-    text-align: center;
     font-size: 42px;
     margin: 40px auto;
     word-wrap: break-word;
