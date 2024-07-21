@@ -1,3 +1,15 @@
+document.addEventListener('DOMContentLoaded', function () {
+  const quickReplyButtons = document.querySelectorAll('.quick-reply')
+  const messageTextarea = document.getElementById('message')
+
+  quickReplyButtons.forEach((button) => {
+    button.addEventListener('click', function () {
+      const text = button.getAttribute('data-text')
+      messageTextarea.value = text
+    })
+  })
+})
+
 function generateQR() {
   const message = document.getElementById('message').value
   if (!message.trim()) {
@@ -135,12 +147,17 @@ function applyRandomRotationToMessageContainer() {
 }
 
 function setupReplyButtons() {
-  const replyButtons = document.querySelectorAll('.quick-reply')
+  const replyButtons = document.querySelectorAll('#replyContainer .quick-reply')
   const messageInput = document.getElementById('message')
 
   replyButtons.forEach((button) => {
     button.addEventListener('click', function () {
-      messageInput.value = this.getAttribute('data-text')
+      const text = this.getAttribute('data-text')
+      messageInput.value = text
+
+      // Trigger input event to simulate user typing
+      const event = new Event('input', { bubbles: true })
+      messageInput.dispatchEvent(event)
     })
   })
 }
@@ -150,6 +167,8 @@ window.onload = function () {
   displayMessage()
   applyRandomRotationToMessageContainer()
   applyRandomRotation()
+  setupCameraButton()
+  setupReplyButtons() // Add this line
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -161,9 +180,9 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 // Modify your window.onload function to include setupCameraButton
-window.onload = function () {
-  displayMessage()
-  applyRandomRotationToMessageContainer()
-  applyRandomRotation()
-  setupCameraButton()
-}
+// window.onload = function () {
+//   displayMessage()
+//   applyRandomRotationToMessageContainer()
+//   applyRandomRotation()
+//   setupCameraButton()
+// }

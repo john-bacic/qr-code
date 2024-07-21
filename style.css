@@ -24,8 +24,8 @@ body {
     line-height: 1.1;
     color: #0004e0;
     background-color: rgb(249, 255, 190);
-    outline: none;  /* This removes the outline */
-    border: none;   /* This removes any border */
+    outline: none;  
+    border: none;   
 }
 
 /* To ensure the outline doesn't appear when focused */
@@ -35,7 +35,7 @@ body {
     background-color: rgb(253, 255, 239); 
 
     background-size: 25px 25px;
-    background-image: radial-gradient(circle, #33333348 1px, rgba(0, 0, 0, 0) 1px);
+    background-image: radial-gradient(circle, rgb(246, 255, 0) 2px, rgba(0, 0, 0, 0) 1px);
   
 
   

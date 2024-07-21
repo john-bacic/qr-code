@@ -25,8 +25,8 @@
 
       <div class="container">
         <div id="message-input">
-          <textarea id="message" placeholder="Write a note here!"></textarea>
-          <button onclick="generateQR()" class="new-message">Make QR Code</button>
+            <textarea id="message" placeholder="Write a note here!"></textarea>
+            <button onclick="generateQR()">Make QR Code</button>
         </div>
         <div id="qr-code"></div>
         <button id="new-message" onclick="newMessage()" style="display: none;" class="new-message-btn">New Message</button>
@@ -34,10 +34,11 @@
 
 
       <div id="replyContainer">
-        <button class="quick-reply" data-text="Yes">Yes</button>
-        <button class="quick-reply" data-text="Maybe">Maybe</button>
-        <button class="quick-reply" data-text="No">No</button>
-        <button class="quick-reply" data-text="Later">Later</button>
+        <button class="quick-reply" data-text="Yes 👍">Yes</button>
+        <button class="quick-reply" data-text="No 🚫">No</button>
+        <button class="quick-reply" data-text="Maybe 🤔">Maybe</button>
+        <button class="quick-reply" data-text="Later ⏲️">Later</button>
+        <button class="quick-reply" data-text="whatup 👋">Whatup</button>
       </div>
 
     <script src="script.js"></script>
