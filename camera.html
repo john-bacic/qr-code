@@ -48,17 +48,24 @@
     <script>
         const video = document.getElementById('qr-video');
         const resultDiv = document.getElementById('result');
-        const openCameraButton = document.getElementById('openCamera');
+        const cameraContainer = document.getElementById('cameraContainer');
 
-        openCameraButton.addEventListener('click', function() {
+        cameraContainer.addEventListener('click', function() {
             window.location.href = 'index.html';
         });
 
         async function startCamera() {
+            const hasPermission = localStorage.getItem('cameraPermission') === 'granted';
+            
             try {
-                const stream = await navigator.mediaDevices.getUserMedia({ 
-                    video: { facingMode: "environment" } 
-                });
+                let stream;
+                if (hasPermission) {
+                    stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+                } else {
+                    stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+                    localStorage.setItem('cameraPermission', 'granted');
+                }
+                
                 video.srcObject = stream;
                 video.setAttribute("playsinline", true);
                 video.play();
@@ -66,6 +73,7 @@
             } catch (error) {
                 console.error('Error accessing the camera:', error);
                 resultDiv.textContent = "Unable to access the camera. Please make sure you've granted the necessary permissions.";
+                localStorage.setItem('cameraPermission', 'denied');
             }
         }
 
