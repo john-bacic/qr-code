@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const openCameraButton = document.getElementById('openCamera')
 
   openCameraButton.addEventListener('click', function () {
-    window.open('camera.html', '_blank')
+    window.open('camera.html', '_self')
   })
 })
 
