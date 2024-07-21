@@ -214,6 +214,12 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 })
 
+const closeCameraButton = document.getElementById('closeCamera')
+
+closeCameraButton.addEventListener('click', function () {
+  window.location.href = 'index.html'
+})
+
 // Modify your window.onload function to include setupCameraButton
 window.onload = function () {
   displayMessage()

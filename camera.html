@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>QR Code Scanner</title>
     <style>
         body {
@@ -31,6 +32,13 @@
     </style>
 </head>
 <body>
+    <div id="cameraContainer">
+        <button id="openCamera">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.6788 1.67911C0.751557 2.60635 0.751555 4.10971 1.6788 5.03695L5.8446 9.20276L1.92697 13.1204C0.999726 14.0476 0.999726 15.551 1.92697 16.4782C2.85421 17.4055 4.35757 17.4055 5.28481 16.4782L9.20245 12.5606L12.8716 16.2298C13.7989 17.157 15.3022 17.157 16.2295 16.2298C17.1567 15.3025 17.1567 13.7992 16.2295 12.8719L12.5603 9.20276L16.4776 5.28542C17.4049 4.35818 17.4049 2.85482 16.4776 1.92758C15.5504 1.00034 14.047 1.00033 13.1198 1.92758L9.20245 5.84491L5.03664 1.67911C4.1094 0.751867 2.60604 0.751867 1.6788 1.67911Z" fill="#F6FF00"/>
+            </svg>
+        </button>
+    </div>
     <div id="video-container">
         <video id="qr-video" playsinline></video>
     </div>
@@ -40,6 +48,11 @@
     <script>
         const video = document.getElementById('qr-video');
         const resultDiv = document.getElementById('result');
+        const openCameraButton = document.getElementById('openCamera');
+
+        openCameraButton.addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
 
         async function startCamera() {
             try {
@@ -70,17 +83,32 @@
                 
                 if (code) {
                     console.log("Found QR code", code.data);
-                    resultDiv.textContent = `QR Code: ${code.data}`;
-                    // You can add logic here to handle the QR code data
-                    // For example, you might want to close this window and pass the data back to the main page
-                    // window.opener.postMessage({ type: 'qrCode', data: code.data }, '*');
-                    // window.close();
+                    if (isValidURL(code.data)) {
+                        window.location.href = code.data;
+                    } else {
+                        resultDiv.textContent = `Invalid URL: ${code.data}`;
+                    }
+                    stopCamera();
                 }
             }
             requestAnimationFrame(tick);
         }
 
-        // Start the camera when the page loads
+        function isValidURL(string) {
+            try {
+                new URL(string);
+                return true;
+            } catch (_) {
+                return false;
+            }
+        }
+
+        function stopCamera() {
+            if (video.srcObject) {
+                video.srcObject.getTracks().forEach(track => track.stop());
+            }
+        }
+
         window.onload = startCamera;
     </script>
 </body>
