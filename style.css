@@ -11,6 +11,9 @@ body {
     height: 100svh;
     margin: 0;
     background-color: #f0f0f0;
+
+    background-size: 25px 25px;
+    background-image: radial-gradient(circle, #5c4caf75 1px, rgba(0, 0, 0, 0) 1px);
 }
 
 #message {
