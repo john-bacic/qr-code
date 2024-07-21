@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #video-container {
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+        #qr-video {
+            width: 100%;
+            height: auto;
+        }
+        #result {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        #start-button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="video-container">
+        <video id="qr-video" playsinline></video>
+    </div>
+    <div id="result"></div>
+    <button id="start-button">Start Camera</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.3.1/dist/jsQR.min.js"></script>
+    <script>
+        const video = document.getElementById('qr-video');
+        const resultDiv = document.getElementById('result');
+        const startButton = document.getElementById('start-button');
+
+        let scanning = false;
+
+        startButton.addEventListener('click', () => {
+            if (scanning) {
+                stopScanning();
+            } else {
+                startScanning();
+            }
+        });
+
+        async function startScanning() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { facingMode: "environment" } 
+                });
+                video.srcObject = stream;
+                video.setAttribute("playsinline", true);
+                video.play();
+                requestAnimationFrame(tick);
+                scanning = true;
+                startButton.textContent = 'Stop Camera';
+            } catch (error) {
+                console.error('Error accessing the camera:', error);
+                resultDiv.textContent = "Unable to access the camera. Please make sure you've granted the necessary permissions.";
+            }
+        }
+
+        function stopScanning() {
+            if (video.srcObject) {
+                video.srcObject.getTracks().forEach(track => track.stop());
+            }
+            scanning = false;
+            startButton.textContent = 'Start Camera';
+        }
+
+        function tick() {
+            if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                const canvas = document.createElement('canvas');
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                const code = jsQR(imageData.data, imageData.width, imageData.height, {
+                    inversionAttempts: "dontInvert",
+                });
+                
+                if (code) {
+                    console.log("Found QR code", code.data);
+                    resultDiv.textContent = `QR Code: ${code.data}`;
+                    // Uncomment the next line if you want to stop scanning after finding a QR code
+                    // stopScanning();
+                }
+            }
+            if (scanning) {
+                requestAnimationFrame(tick);
+            }
+        }
+    </script>
+</body>
+</html>
