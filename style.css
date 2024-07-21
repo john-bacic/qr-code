@@ -85,7 +85,8 @@ button {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    word-break: keep-all;
+    min-width: 150px;  
+    white-space: nowrap; 
 }
 
 button:before {
