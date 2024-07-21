@@ -63,7 +63,8 @@ button {
     color: rgb(246, 255, 0);
     font-family: "Reenie Beanie", cursive;
     /* font-family: "Shadows Into Light", cursive; */
-    font-weight: 400;
+    /* font-weight: 400; */
+    font-weight: bolder;
     font-style: normal;
 
     font-size: 24px;
