@@ -147,3 +147,18 @@ button:active {
 
 
 
+textarea {
+    width: 90%;
+    height: 150px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    padding: 10px;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+}
+
+textarea:focus {
+    outline: 3px solid #ffff00;
+    box-shadow: 0 0 10px #ffff00;
+    transform: scale(1.02);
+}
