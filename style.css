@@ -1,6 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Playwrite+AR:wght@100..400&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
 
 body {
     font-family: Arial, sans-serif;
@@ -61,14 +60,11 @@ button {
 }
 
 .message-display #scanned-message {
-    font-family: "Playwrite AR", cursive;
-    font-optical-sizing: auto;
-  
+    font-family: "Fredericka the Great", serif;
+    font-weight: 400;
     font-style: normal;
-    font-size: 38px;
-    font-weight: 800;
-    line-height: normal;
-    margin: 40px auto;
+
+    margin: 48px auto;
     max-width: 100%;
     padding: 0 20px;
     box-sizing: border-box;
@@ -78,7 +74,7 @@ button {
     overflow-wrap: break-word;
     /* Create outline effect */
     color: #020202;
-    text-shadow:
+    /* text-shadow:
         -3px -3px 0 #FFF,
         3px -3px 0 #FFF,
         -3px 3px 0 #FFF,
@@ -87,7 +83,7 @@ button {
         3px 0 0 #FFF,
         0 -3px 0 #FFF,
         0 3px 0 #FFF,
-        4px 4px 6px rgba(0, 0, 0, 0.2);
+        4px 4px 6px rgba(0, 0, 0, 0.2); */
 }
 
 
