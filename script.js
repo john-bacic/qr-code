@@ -48,6 +48,9 @@ function generateQR() {
   // Hide the message input and show the New Message button
   document.getElementById('message-input').style.display = 'none'
   document.getElementById('new-message').style.display = 'inline-block'
+
+  // Hide the replyContainer
+  document.getElementById('replyContainer').style.display = 'none'
 }
 
 function newMessage() {
@@ -56,6 +59,9 @@ function newMessage() {
   document.getElementById('new-message').style.display = 'none'
   document.getElementById('qr-code').innerHTML = ''
   document.getElementById('message').value = ''
+
+  // Show the replyContainer
+  document.getElementById('replyContainer').style.display = 'block'
 }
 
 function displayMessage() {
@@ -108,6 +114,18 @@ function displayMessage() {
   }
 }
 
+function applyRandomRotation() {
+  const buttons = document.querySelectorAll('button:not(#openCamera)')
+  buttons.forEach((button) => {
+    const randomRotation = Math.random() * 6 - 3 // Random number between -3 and 3
+    if (button.classList.contains('new-message-btn')) {
+      button.style.transform = `translateX(-50%) rotate(${randomRotation}deg)`
+    } else {
+      button.style.transform = `rotate(${randomRotation}deg)`
+    }
+  })
+}
+
 function applyRandomRotationToMessageContainer() {
   const container = document.getElementById('message-container')
   if (container) {
@@ -116,10 +134,22 @@ function applyRandomRotationToMessageContainer() {
   }
 }
 
+function setupReplyButtons() {
+  const replyButtons = document.querySelectorAll('.quick-reply')
+  const messageInput = document.getElementById('message')
+
+  replyButtons.forEach((button) => {
+    button.addEventListener('click', function () {
+      messageInput.value = this.getAttribute('data-text')
+    })
+  })
+}
+
 // Combine all onload functions
 window.onload = function () {
   displayMessage()
   applyRandomRotationToMessageContainer()
+  applyRandomRotation()
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -129,3 +159,11 @@ document.addEventListener('DOMContentLoaded', function () {
     window.location.href = 'camera.html'
   })
 })
+
+// Modify your window.onload function to include setupCameraButton
+window.onload = function () {
+  displayMessage()
+  applyRandomRotationToMessageContainer()
+  applyRandomRotation()
+  setupCameraButton()
+}
