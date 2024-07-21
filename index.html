@@ -8,7 +8,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 </head>
 <body>
+
+    
+    <div id="cameraContainer">
+        <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display: none;">
+        <button id="openCamera">
+            <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.82422 1.24464L5.41797 2.42857H2.5C1.12109 2.42857 0 3.51763 0 4.85714V14.5714C0 15.9109 1.12109 17 2.5 17H17.5C18.8789 17 20 15.9109 20 14.5714V4.85714C20 3.51763 18.8789 2.42857 17.5 2.42857H14.582L14.1758 1.24464C13.9219 0.500893 13.207 0 12.3984 0H7.60156C6.79297 0 6.07813 0.500893 5.82422 1.24464ZM10 6.07143C10.9946 6.07143 11.9484 6.45523 12.6517 7.1384C13.3549 7.82157 13.75 8.74814 13.75 9.71429C13.75 10.6804 13.3549 11.607 12.6517 12.2902C11.9484 12.9733 10.9946 13.3571 10 13.3571C9.00544 13.3571 8.05161 12.9733 7.34835 12.2902C6.64509 11.607 6.25 10.6804 6.25 9.71429C6.25 8.74814 6.64509 7.82157 7.34835 7.1384C8.05161 6.45523 9.00544 6.07143 10 6.07143Z" fill="#F6FF00"/>
+            </svg>
+          </button>
+      </div>
+
+
+
     <div class="container">
+        
         <!-- <h1>QR Code Messenger</h1> -->
         <div id="message-input">
             <textarea id="message" placeholder="Enter your message here"></textarea>
@@ -16,7 +30,15 @@
         </div>
         <div id="qr-code"></div>
         <button id="new-message" onclick="newMessage()" style="display: none;" class="new-message-btn">New Message</button>
+
+
+
+        
     </div>
+
+
+
+
     <script src="script.js"></script>
 </body>
 </html>

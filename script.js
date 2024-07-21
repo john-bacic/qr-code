@@ -109,7 +109,7 @@ function displayMessage() {
 }
 
 function applyRandomRotation() {
-  const buttons = document.querySelectorAll('button')
+  const buttons = document.querySelectorAll('button:not(#openCamera)')
   buttons.forEach((button) => {
     const randomRotation = Math.random() * 6 - 3 // Random number between -3 and 3
     if (button.classList.contains('new-message-btn')) {
@@ -140,3 +140,35 @@ window.onload = function () {
 
 // Call this function when the message.html page loads
 // window.onload = displayMessage
+
+// Add this function to your existing script.js
+function setupCameraButton() {
+  const openCameraButton = document.getElementById('openCamera')
+  const cameraInput = document.getElementById('cameraInput')
+
+  if (openCameraButton && cameraInput) {
+    openCameraButton.addEventListener('click', function () {
+      cameraInput.click()
+    })
+
+    cameraInput.addEventListener('change', function (event) {
+      const file = event.target.files[0]
+      if (file) {
+        // Here you can handle the captured image
+        // For example, you could display it or send it to a server
+        console.log('Image captured:', file)
+
+        // You might want to add code here to process the QR code in the image
+        // This would require a QR code reading library
+      }
+    })
+  }
+}
+
+// Modify your window.onload function to include setupCameraButton
+window.onload = function () {
+  displayMessage()
+  applyRandomRotationToMessageContainer()
+  applyRandomRotation()
+  setupCameraButton()
+}
