@@ -64,10 +64,14 @@ button {
     font-weight: 800;
     line-height: normal;
     margin: 40px auto;
-    word-wrap: break-word;
     max-width: 90%;
     padding: 0 20px;
     box-sizing: border-box;
+    
+    /* Prevent word breaking */
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: break-word;
     
     /* Create outline effect */
     color: #493d88;
