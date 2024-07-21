@@ -137,39 +137,72 @@ window.onload = function () {
 
 function setupCameraButton() {
   const openCameraButton = document.getElementById('openCamera')
-  const cameraInput = document.getElementById('cameraInput')
+  const video = document.createElement('video')
+  const canvasElement = document.createElement('canvas')
+  const canvas = canvasElement.getContext('2d')
 
-  if (openCameraButton && cameraInput) {
-    openCameraButton.addEventListener('click', function () {
-      cameraInput.click()
-    })
+  let scanning = false
 
-    cameraInput.addEventListener('change', function (event) {
-      const file = event.target.files[0]
-      if (file) {
-        console.log('Media captured:', file)
+  openCameraButton.addEventListener('click', async function () {
+    if (scanning) {
+      stopScanning()
+    } else {
+      startScanning()
+    }
+  })
 
-        // Handle image file
-        if (file.type.startsWith('image/')) {
-          const reader = new FileReader()
-          reader.onload = function (e) {
-            const img = document.createElement('img')
-            img.src = e.target.result
-            img.style.maxWidth = '100%'
-            document.body.appendChild(img)
-          }
-          reader.readAsDataURL(file)
-        }
-        // Handle video file
-        else if (file.type.startsWith('video/')) {
-          const video = document.createElement('video')
-          video.src = URL.createObjectURL(file)
-          video.controls = true
-          video.style.maxWidth = '100%'
-          document.body.appendChild(video)
-        }
+  async function startScanning() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: 'environment' },
+      })
+      video.srcObject = stream
+      video.setAttribute('playsinline', true) // required to tell iOS safari we don't want fullscreen
+      video.play()
+      requestAnimationFrame(tick)
+      scanning = true
+    } catch (error) {
+      console.error('Error accessing the camera:', error)
+      alert(
+        "Unable to access the camera. Please make sure you've granted the necessary permissions."
+      )
+    }
+  }
+
+  function stopScanning() {
+    video.srcObject.getTracks().forEach((track) => track.stop())
+    scanning = false
+  }
+
+  function tick() {
+    if (video.readyState === video.HAVE_ENOUGH_DATA) {
+      canvasElement.height = video.videoHeight
+      canvasElement.width = video.videoWidth
+      canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height)
+      var imageData = canvas.getImageData(
+        0,
+        0,
+        canvasElement.width,
+        canvasElement.height
+      )
+      var code = jsQR(imageData.data, imageData.width, imageData.height, {
+        inversionAttempts: 'dontInvert',
+      })
+      if (code) {
+        console.log('Found QR code', code.data)
+        handleQRCode(code.data)
+        stopScanning()
+        return
       }
-    })
+    }
+    if (scanning) {
+      requestAnimationFrame(tick)
+    }
+  }
+
+  function handleQRCode(data) {
+    // Assuming the QR code contains a URL to the message page
+    window.location.href = data
   }
 }
 
