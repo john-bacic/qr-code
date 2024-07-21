@@ -36,15 +36,14 @@ function displayMessage() {
   const scannedMessage = document.getElementById('scanned-message')
 
   if (message) {
-    let index = 0
-    function animateText() {
-      if (index < message.length) {
-        scannedMessage.innerHTML += message.charAt(index)
-        index++
-        setTimeout(animateText, 100) // Adjust the delay (in milliseconds) between each letter
-      }
-    }
-    animateText()
+    new Typed('#scanned-message', {
+      strings: [message],
+      typeSpeed: 50,
+      showCursor: false,
+      onComplete: (self) => {
+        // Optional: Add any actions you want to perform after the animation is complete
+      },
+    })
   } else {
     scannedMessage.textContent = 'No message found.'
   }
