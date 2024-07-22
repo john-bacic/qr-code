@@ -62,9 +62,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /////////////// RANDOM QUESTION
 
+// script.js
+
 const questions = [
-  'What did you have for breakfast this morning?',
-  'What is the most embarrassing thing that has ever happened to you?',
+  "What's the most embarrassing thing that's ever happened to you?",
   'If you could be anyone else for a day, who would you choose?',
   "What's the weirdest food you've ever tried?",
   "What's your favorite TV show or movie these days?",
@@ -111,7 +112,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const qrCodeContainer = document.getElementById('qr-code')
 
   document
-    .querySelector('.quick-reply[data-text^="rando"]')
+    .querySelector('.quick-reply[data-text^="🎲 Random question"]')
     .addEventListener('click', () => {
       const randomQuestion =
         questions[Math.floor(Math.random() * questions.length)]
