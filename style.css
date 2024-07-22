@@ -35,7 +35,7 @@ body {
     background-color: rgb(253, 255, 239); 
 
     background-size: 25px 25px;
-    background-image: radial-gradient(circle, rgb(246, 255, 0) 2px, rgba(0, 0, 0, 0) 1px);
+    background-image: radial-gradient(circle, rgb(246, 255, 0) 3px, rgba(0, 0, 0, 0) 1px);
   
 
   
@@ -184,7 +184,7 @@ textarea {
 }
 
 textarea:focus {
-    outline: 3px solid #ffff00;
+    outline: 4px solid #ffff00;
     box-shadow: 0 0 10px #ffff00;
     transform: scale(1.02);
 }
