@@ -60,6 +60,54 @@ document.addEventListener('DOMContentLoaded', function () {
   )
 })
 
+/////////////// RANDOM QUESTION
+
+const questions = [
+  "What's the most embarrassing thing that's ever happened to you?",
+  'If you could be anyone else for a day, who would you choose?',
+  "What's the weirdest food you've ever tried?",
+  'Ever had a spooky ghost encounter?',
+  "What's your go-to karaoke jam?",
+  "What's your guilty pleasure TV show or movie?",
+  'If you could have any superpower, what would it be?',
+  "What's the craziest dare you've ever done?",
+  "What's the best prank you've ever pulled off?",
+  "What's your favorite way to spend the weekend?",
+  'Ever met a celebrity? Who was it?',
+  "What's the worst job you've ever had?",
+  'If you could only eat one food forever, what would it be?',
+  'Got any weird talents?',
+  "What's the most spontaneous thing you've ever done?",
+  'What was your favorite TV show as a kid?',
+  "If you won the lottery, what's the first thing you'd buy?",
+  "What's the strangest dream you've ever had?",
+  'Ever gotten a tattoo or piercing on a whim?',
+  "What's the funniest thing that's happened to you lately?",
+]
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  const qrCodeContainer = document.getElementById('qr-code')
+
+  document
+    .querySelector('.quick-reply[data-text^="🎲 Random question"]')
+    .addEventListener('click', () => {
+      const randomQuestion =
+        questions[Math.floor(Math.random() * questions.length)]
+      document.getElementById('message').value = randomQuestion
+      generateQR(randomQuestion)
+    })
+
+  function generateQR(text) {
+    qrCodeContainer.innerHTML = ''
+    const qr = qrcode(0, 'M')
+    qr.addData(text)
+    // qr.make()
+    // qrCodeContainer.innerHTML = qr.createImgTag()
+  }
+})
+
+//////////////////////////////
+
 function generateQR() {
   const message = document.getElementById('message').value
   if (!message.trim()) {
