@@ -112,7 +112,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const qrCodeContainer = document.getElementById('qr-code')
 
   document
-    .querySelector('.quick-reply[data-text^="Random question"]')
+    .querySelector(
+      '.quick-reply[data-text^="What is is your favourite colour?"]'
+    )
     .addEventListener('click', () => {
       const randomQuestion =
         questions[Math.floor(Math.random() * questions.length)]
