@@ -71,8 +71,8 @@ label {
 
 .new-message-btn {
     position: absolute; 
-    bottom: -90px; /* Adjust as necessary to position below the container */
-    left: 25%; 
+    bottom: 20px; /* Adjust as necessary to position below the container */
+    /* left: 30%;  */
     transform: translate(-50%, 50%); /* Center the button by its center */
     white-space: nowrap; /* Prevents text breaking within the button */
 }
