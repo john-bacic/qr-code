@@ -269,8 +269,8 @@ textarea:focus {
   .quick-reply {
     margin: 5px;
     /* color: #0004e0; */
-    background-color: #FF57BB;
-    font-size: 15px;
+    background-color: #fd36ae;
+    font-size: 16px;
     min-width: 100px;
     max-height: 45px;
     /* overflow: hidden;  */
@@ -309,4 +309,4 @@ textarea:focus {
 }
 
 
-/* scrolling bottom row fixed pink buttons  */
+/* scrolling bottom row fixed darker pink buttons  */
