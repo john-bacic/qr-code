@@ -19,11 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function handleQuickReply(event) {
       const button = event.currentTarget
       const text = button.getAttribute('data-text')
-      if (messageTextarea.value === text) {
-        messageTextarea.value = '' // Clear the textarea if it already contains the button's text
-      } else {
-        messageTextarea.value = text // Set the textarea to the button's text
-      }
+      messageTextarea.value = text // Set the textarea to the button's text
     }
 
     button.addEventListener('click', handleQuickReply)
