@@ -78,7 +78,6 @@ const questions = [
   'Ever met a celebrity? Who was it?',
   "What's the worst job you've ever had?",
   'If you could only eat one food forever, what would it be?',
-  'Got any weird talents?',
   "What's the most spontaneous thing you've ever done?",
   'What was your favorite TV show as a kid?',
   "If you won the lottery, what's the first thing you'd buy?",
@@ -141,9 +140,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   function generateQR(text) {
     qrCodeContainer.innerHTML = ''
-    const qr = qrcode(0, 'M')
-    qr.addData(text)
-    qr.make()
+    // const qr = qrcode(0, 'M')
+    // qr.addData(text)
+    // qr.make()
     // qrCodeContainer.innerHTML = qr.createImgTag()
   }
 })
