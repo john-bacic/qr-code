@@ -274,7 +274,7 @@ textarea:focus {
 
   .quick-reply {
     margin: 5px;
-    padding: 4px 8px;
+    /* padding: 4px 8px; */
     /* color: #0004e0; */
     background-color: #fd36ae;
     font-size: 16px;
