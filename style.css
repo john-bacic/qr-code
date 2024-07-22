@@ -266,12 +266,6 @@ textarea:focus {
 
 
 
-  /* #quick-replies {
-    margin-top: 20px;
-    display: flex;
-    justify-content: left;
-    flex-wrap: wrap;
-  } */
   
 
   .quick-reply {
@@ -287,7 +281,7 @@ textarea:focus {
     box-shadow: 5px 5px 0 #000;
     transition: all 0.3s ease;
     display: inline-block; 
-    min-width: 20%;
+    min-width: 120px;
     overflow: hidden; 
 }
 
@@ -307,14 +301,10 @@ textarea:focus {
     z-index: 1000;
     display: flex;
     overflow-x: auto;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     padding: 10px;
-    /* background-color: #f1f1f1;  */
     width: 100%;
-    
-   
-    box-sizing: border-box; /* Include padding in width */
-    /* height: 80px; */
+    box-sizing: border-box; 
     -webkit-overflow-scrolling: touch;
 }
 
