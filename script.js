@@ -64,6 +64,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // script.js
 
+// script.js
+
 const questions = [
   "What's the most embarrassing thing that's ever happened to you?",
   'If you could be anyone else for a day, who would you choose?',
@@ -108,6 +110,17 @@ const questions = [
   'If you could teleport anywhere right now, where would you go?',
 ]
 
+let shuffledQuestions = shuffleArray(questions.slice())
+let currentIndex = 0
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]]
+  }
+  return array
+}
+
 document.addEventListener('DOMContentLoaded', (event) => {
   const qrCodeContainer = document.getElementById('qr-code')
 
@@ -116,8 +129,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
       '.quick-reply[data-text^="What is is your favourite colour?"]'
     )
     .addEventListener('click', () => {
-      const randomQuestion =
-        questions[Math.floor(Math.random() * questions.length)]
+      if (currentIndex >= shuffledQuestions.length) {
+        shuffledQuestions = shuffleArray(questions.slice())
+        currentIndex = 0
+      }
+      const randomQuestion = shuffledQuestions[currentIndex]
+      currentIndex++
       document.getElementById('message').value = randomQuestion
       generateQR(randomQuestion)
     })
