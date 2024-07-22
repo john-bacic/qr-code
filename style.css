@@ -268,10 +268,10 @@ textarea:focus {
 
   
 
-  .quick-reply {
+  /* .quick-reply {
     margin: 5px;
     padding: 10px 10px;
-    /* padding-right: 50px; */
+ 
     font-size: 18px;
     cursor: pointer;
     background-color: #5c4caf;
@@ -283,9 +283,17 @@ textarea:focus {
     display: inline-block; 
     min-width: 120px;
     overflow: hidden; 
-}
+} */
 
-.quick-reply:hover {
+
+  .quick-reply {
+    margin: 5px;
+    font-size: 16px;
+    min-width: 130px;
+  }
+
+
+/* .quick-reply:hover {
     transform: translateY(-5px); 
     opacity: 0.90; 
 }
@@ -293,7 +301,7 @@ textarea:focus {
 .quick-reply:active {
     box-shadow: 1px 1px 0 #000;
     opacity: 0.90; 
-}
+} */
 
 #replyContainer {
     position: fixed;
@@ -323,6 +331,4 @@ textarea:focus {
 }
 
 
-/* try fix bottom buttons */
-/* no #quick-replies  */
-/* 20% wide */
+/* try fix colour 2  */
