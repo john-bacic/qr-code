@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
+  const replyContainer = document.getElementById('replyContainer')
+  replyContainer.scrollLeft = 0 // Scroll to the leftmost item
+
   const quickReplyButtons = document.querySelectorAll('.quick-reply')
   const messageTextarea = document.getElementById('message')
   const qrCodeButton = document.querySelector("button[onclick='generateQR()']")
@@ -19,7 +22,11 @@ document.addEventListener('DOMContentLoaded', function () {
     function handleQuickReply(event) {
       const button = event.currentTarget
       const text = button.getAttribute('data-text')
-      messageTextarea.value = text
+      if (messageTextarea.value === text) {
+        messageTextarea.value = '' // Clear the textarea if it already contains the button's text
+      } else {
+        messageTextarea.value = text // Set the textarea to the button's text
+      }
     }
 
     button.addEventListener('click', handleQuickReply)
@@ -33,6 +40,31 @@ document.addEventListener('DOMContentLoaded', function () {
   if (newMessageButton) {
     applyRandomRotation(newMessageButton)
   }
+
+  // Prevent double-tap to zoom
+  document.addEventListener(
+    'touchstart',
+    function (event) {
+      if (event.touches.length > 1) {
+        event.preventDefault()
+      }
+    },
+    { passive: false }
+  )
+
+  // Prevent double-tap to zoom by disabling double-click
+  let lastTouchEnd = 0
+  document.addEventListener(
+    'touchend',
+    function (event) {
+      const now = new Date().getTime()
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault()
+      }
+      lastTouchEnd = now
+    },
+    false
+  )
 })
 
 function generateQR() {
@@ -229,4 +261,4 @@ document.addEventListener(
   false
 )
 
-// back to no clear quick butttons
+// scrolling bottom row
