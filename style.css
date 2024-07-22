@@ -295,12 +295,13 @@ textarea:focus {
     position: fixed;
     bottom: 20px;
     z-index: 1000;
-
     display: flex;
     overflow-x: auto;
     white-space: nowrap;
     padding: 10px;
     background-color: #f1f1f1; /* Adjust background color as needed */
+    width: 100%; /* Ensure it spans the full width */
+    box-sizing: border-box; /* Include padding in width */
 }
 
 .quick-reply {
@@ -326,6 +327,8 @@ textarea:focus {
     box-shadow: 5px 5px 0 #000;
     opacity: 0.75; /* Add opacity on active */
 }
+
+
 
 
 /* bottom buttons narrower */
