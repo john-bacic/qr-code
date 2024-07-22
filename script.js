@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const qrCodeContainer = document.getElementById('qr-code')
 
   document
-    .querySelector('.quick-reply[data-text^="🎲 Random question"]')
+    .querySelector('.quick-reply[data-text^="Random question"]')
     .addEventListener('click', () => {
       const randomQuestion =
         questions[Math.floor(Math.random() * questions.length)]
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     qrCodeContainer.innerHTML = ''
     const qr = qrcode(0, 'M')
     qr.addData(text)
-    // qr.make()
+    qr.make()
     // qrCodeContainer.innerHTML = qr.createImgTag()
   }
 })
