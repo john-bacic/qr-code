@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function generateQR() {
   const message = document.getElementById('message').value
   if (!message.trim()) {
-    alert('Please enter a message.')
+    alert('Write something!')
     return
   }
 
