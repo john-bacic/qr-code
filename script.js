@@ -1,17 +1,38 @@
 document.addEventListener('DOMContentLoaded', function () {
   const quickReplyButtons = document.querySelectorAll('.quick-reply')
   const messageTextarea = document.getElementById('message')
+  const qrCodeButton = document.querySelector("button[onclick='generateQR()']")
+  const newMessageButton = document.getElementById('new-message')
 
-  function handleQuickReply(event) {
-    const button = event.currentTarget
-    const text = button.getAttribute('data-text')
-    messageTextarea.value = text
+  function getRandomRotation() {
+    return Math.floor(Math.random() * 7) - 3 // Generates a number between -3 and 3
+  }
+
+  function applyRandomRotation(button) {
+    const rotationAngle = getRandomRotation()
+    button.style.transform = `rotate(${rotationAngle}deg)`
   }
 
   quickReplyButtons.forEach((button) => {
+    applyRandomRotation(button)
+
+    function handleQuickReply(event) {
+      const button = event.currentTarget
+      const text = button.getAttribute('data-text')
+      messageTextarea.value = text
+    }
+
     button.addEventListener('click', handleQuickReply)
     button.addEventListener('touchend', handleQuickReply)
   })
+
+  if (qrCodeButton) {
+    applyRandomRotation(qrCodeButton)
+  }
+
+  if (newMessageButton) {
+    applyRandomRotation(newMessageButton)
+  }
 })
 
 function generateQR() {
