@@ -266,14 +266,12 @@ textarea:focus {
 
 
 
-  #quick-replies {
+  /* #quick-replies {
     margin-top: 20px;
     display: flex;
     justify-content: left;
     flex-wrap: wrap;
-  }
-  
-
+  } */
   
 
   .quick-reply {
@@ -335,3 +333,4 @@ textarea:focus {
 
 
 /* try fix bottom buttons */
+/* no #quick-replies  */
