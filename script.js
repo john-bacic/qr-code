@@ -141,8 +141,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   function generateQR(text) {
     qrCodeContainer.innerHTML = ''
-    // const qr = qrcode(0, 'M')
-    // qr.addData(text)
+    const qr = qrcode(0, 'M')
+    qr.addData(text)
     // qr.make()
     // qrCodeContainer.innerHTML = qr.createImgTag()
   }
