@@ -71,9 +71,9 @@ label {
 
 .new-message-btn {
     position: absolute; 
-    bottom: -90px; /* Adjusted to reduce the space below */
+    bottom: -90px; /* Adjust as necessary to position below the container */
     left: 25%; 
-    transform: translate(-50%, -50%); /* Center the button by its center */
+    transform: translate(-50%, 50%); /* Center the button by its center */
     white-space: nowrap; /* Prevents text breaking within the button */
 }
 
@@ -117,8 +117,9 @@ button:before {
 }
 
 button:hover {
-    transform: translateY(-5px);
-    box-shadow: 5px 10px 0 #00000076;
+    transform: translateY(-10px); /* Move the button up on hover */
+    box-shadow: 3px 3px 0 #00000076;
+    opacity: 0.95; /* Add opacity on hover */
 }
 
 button:hover:before {
@@ -126,8 +127,10 @@ button:hover:before {
 }
 
 button:active {
-    box-shadow: 5px 5px 0 #000;
+    box-shadow: 0px 0px 0 #000;
+    opacity: 0.75; /* Add opacity on active */
 }
+
 
 
 
@@ -292,10 +295,11 @@ textarea:focus {
     transition: all 0.3s ease;
 }
 
-.quick-reply:hover {
-    transform: translateY(5px); /* Move the button down on hover */
-}
+ /* .quick-reply:hover {
+    transform: translateY(-5px); 
+   
+} */
 
-.quick-reply:active {
+/* .quick-reply:active {
     box-shadow: 5px 5px 0 #000;
-}
+} */
