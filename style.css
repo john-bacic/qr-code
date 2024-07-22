@@ -21,7 +21,7 @@ body {
     font-weight: 400;
     font-style: normal;
     font-size: 42px;
-    line-height: 1.1;
+    line-height: .9;
     color: #0004e0;
     background-color: rgb(249, 255, 190);
     outline: none;  
@@ -180,7 +180,6 @@ textarea {
     margin-bottom: 10px;
     font-size: 18px;
     padding: 10px;
-    line-height: 1;
     transition: all 0.3s ease;
 }
 
