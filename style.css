@@ -175,12 +175,12 @@ button:active {
   }
 
 textarea {
-    width: 90%;
-    height: 150px;
+    width: 95%;
+    height: 200px;
     margin-bottom: 10px;
     font-size: 18px;
     padding: 10px;
-    line-height: 1.5;
+    line-height: 1.2;
     transition: all 0.3s ease;
 }
 
