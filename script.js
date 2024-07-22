@@ -63,15 +63,14 @@ document.addEventListener('DOMContentLoaded', function () {
 /////////////// RANDOM QUESTION
 
 const questions = [
-  "What's the most embarrassing thing that's ever happened to you?",
+  'What did you have for breakfast this morning?',
+  'What is the most embarrassing thing that has ever happened to you?',
   'If you could be anyone else for a day, who would you choose?',
   "What's the weirdest food you've ever tried?",
-  'Ever had a spooky ghost encounter?',
-  "What's your go-to karaoke jam?",
-  "What's your guilty pleasure TV show or movie?",
+  "What's your favorite TV show or movie these days?",
   'If you could have any superpower, what would it be?',
   "What's the craziest dare you've ever done?",
-  "What's the best prank you've ever pulled off?",
+  "What's the best prank you've ever pulled?",
   "What's your favorite way to spend the weekend?",
   'Ever met a celebrity? Who was it?',
   "What's the worst job you've ever had?",
@@ -81,15 +80,38 @@ const questions = [
   'What was your favorite TV show as a kid?',
   "If you won the lottery, what's the first thing you'd buy?",
   "What's the strangest dream you've ever had?",
-  'Ever gotten a tattoo or piercing on a whim?',
   "What's the funniest thing that's happened to you lately?",
+  "What's the silliest thing that's ever happened to you?",
+  'If you could be anyone else for a day, who would you pick?',
+  'Have you ever seen a ghost or something spooky?',
+  "What's your favorite song to sing along to?",
+  "What's the most fun thing you've ever done without planning?",
+  "What's the weirdest thing you've ever eaten for breakfast?",
+  'If you could time travel, where would you go?',
+  "What's the funniest thing your pet has ever done?",
+  'If you could instantly become an expert in something, what would it be?',
+  "What's the most unusual thing you've ever collected?",
+  'If you could switch lives with a fictional character, who would it be?',
+  "What's the best costume you've ever worn?",
+  "What's the most awkward thing that's happened to you on a date?",
+  'If you could live in any era, which one would you choose?',
+  "What's the funniest text you've ever received?",
+  'If you could have dinner with any historical figure, who would it be?',
+  "What's the most creative excuse you've ever made up?",
+  "What's your go-to dance move?",
+  'If you could only listen to one song for the rest of your life, what would it be?',
+  "What's the most adventurous thing you've ever done?",
+  'If you could be famous for one thing, what would it be?',
+  "What's the most ridiculous fact you know?",
+  "What's the weirdest talent you have?",
+  'If you could teleport anywhere right now, where would you go?',
 ]
 
 document.addEventListener('DOMContentLoaded', (event) => {
   const qrCodeContainer = document.getElementById('qr-code')
 
   document
-    .querySelector('.quick-reply[data-text^="🎲 Random question"]')
+    .querySelector('.quick-reply[data-text^="rando"]')
     .addEventListener('click', () => {
       const randomQuestion =
         questions[Math.floor(Math.random() * questions.length)]
