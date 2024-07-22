@@ -107,6 +107,7 @@ const questions = [
   "What's the most ridiculous fact you know?",
   "What's the weirdest talent you have?",
   'If you could teleport anywhere right now, where would you go?',
+  "What's your favourite colour and why?",
 ]
 
 let shuffledQuestions = shuffleArray(questions.slice())
