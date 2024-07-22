@@ -267,7 +267,7 @@ textarea:focus {
 
   #replyBTNContainer{
     position: fixed;
-    bottom: 80px; 
+    bottom: 70px; 
     left: 50%; 
     transform: translate(-50%, 50%); 
     white-space: nowrap; 
