@@ -203,22 +203,12 @@ textarea {
     font-size: 18px;
     padding: 10px;
     transition: all 0.3s ease;
-
-    user-select: none;  /* Disable text selection */
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 textarea:focus {
     outline: 4px solid #ffff00;
     box-shadow: 0 0 10px #ffff00;
     transform: scale(1.02);
-
-    user-select: none;  /* Disable text selection */
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 @keyframes scaleIn {
