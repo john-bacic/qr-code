@@ -110,6 +110,11 @@ button {
     position: relative;
     overflow: hidden;
     white-space: nowrap; /* Prevents text breaking within the button */
+
+    user-select: none;  /* Disable text selection */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 button:before {
@@ -209,6 +214,11 @@ textarea:focus {
     outline: 4px solid #ffff00;
     box-shadow: 0 0 10px #ffff00;
     transform: scale(1.02);
+
+    user-select: none;  /* Disable text selection */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 @keyframes scaleIn {
