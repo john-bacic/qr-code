@@ -166,6 +166,68 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 //////////////////////////////
 
+// Example existing function that sets a random message
+function displayRandomQuestion() {
+  const questions = [
+    'What is your favourite colour?',
+    'Hey whatsup? ✨👋',
+    'Yes Yes & Yes 👍✨',
+    '🚫 No nope nuh uh not even once never nada no comprende no abla negatory nein nill noooooooooOOOOOO!!!',
+    'Maybe 🤔💭',
+    'Later... TBD ⏲️✨',
+    'Sure 👍✨',
+    'Good Morning 🌞✨',
+    'Hello, what do you want? ✨👋',
+    'Thanks 🙏✨',
+    'Great 🎉✨',
+    'Sorry 😢✨',
+    'Awesomely amazing ✨😎✨',
+    'Okay ✨👌',
+    '✨❤️❤️❤️✨',
+    '💋💋💋✨',
+    "Cool let's do it! ✨😎✨",
+    'Agree ✨😉✨',
+    'Yes sir ✨🤬✨',
+    'No problem 🫠✨',
+    'Will do ✨🖕✨',
+    'Nice ✨😇✨',
+    "Let's go ✨🚀",
+    'On it ✨🌵✨',
+    'Shit ✨💩✨',
+    'Cheers ✨🍻✨',
+    'Drink ✨🍺✨',
+    'Fuck You ✨🖕✨',
+  ]
+
+  const randomIndex = Math.floor(Math.random() * questions.length)
+  updateMessage(questions[randomIndex])
+}
+
+// Example of attaching event listeners to quick-reply buttons
+document.querySelectorAll('.quick-reply').forEach((button) => {
+  button.addEventListener('click', () => {
+    const newMessage = button.getAttribute('data-text')
+    updateMessage(newMessage)
+  })
+})
+
+// Function to add fade-in effect
+function addFadeInEffect(element) {
+  element.classList.remove('fade-in')
+  // Trigger reflow to restart animation
+  void element.offsetWidth
+  element.classList.add('fade-in')
+}
+
+// Example function that updates the message in the textarea
+function updateMessage(newMessage) {
+  const messageElement = document.getElementById('message')
+  messageElement.value = newMessage
+  addFadeInEffect(messageElement)
+}
+
+//////////////////////////////
+
 function generateQR() {
   const message = document.getElementById('message').value
   if (!message.trim()) {
@@ -219,6 +281,9 @@ function generateQR() {
 
   // Hide the replyContainer
   document.getElementById('replyContainer').style.display = 'none'
+
+  // After generating the QR code, add fade-in effect to the textarea
+  addFadeInEffect(document.getElementById('message'))
 }
 
 function newMessage() {
@@ -336,3 +401,5 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 // back to no clear quick butttons
+
+// Modify existing code to use updateMessage function
