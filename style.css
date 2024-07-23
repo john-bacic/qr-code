@@ -281,25 +281,21 @@ textarea:focus {
 
   .quick-reply {
     margin: 5px;
-    /* padding: 4px 8px; */
-    /* color: #0004e0; */
     text-align: center;
     background-color: #fd36ae;
     font-size: 16px;
-    min-width: 100px;
+    /* padding: 12px 50px 12px 20px; */
+    min-width: 120px;
     max-height: 45px;
-    /* overflow: hidden;  */
-
-
   }
 
   .quick-reply:hover {
-    transform: translateY(-10px); /* Move the button up on hover */
+    transform: translateY(-10px); 
     font-size: 20px;
     padding-top: 8px;
     background-color: #ff0099;
     box-shadow: 1px 1px 0 #00000076;
-    opacity: 0.95; /* Add opacity on hover */
+    opacity: 0.95; 
 }
 
 
