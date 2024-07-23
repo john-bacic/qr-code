@@ -59,12 +59,9 @@ document.addEventListener('DOMContentLoaded', function () {
     false
   )
 })
+///////////////////////////////
 
 /////////////// RANDOM QUESTION
-
-// script.js
-
-// script.js
 
 const questions = [
   "What's the most embarrassing thing that's ever happened to you?",
@@ -320,17 +317,6 @@ function setupReplyButtons() {
     })
   })
 }
-
-// prevent navigating back
-const element = document.querySelector('div')
-
-element.addEventListener('touchstart', (e) => {
-  // is not near edge of view, exit
-  if (e.pageX > 20 && e.pageX < window.innerWidth - 20) return
-
-  // prevent swipe to navigate back gesture
-  e.preventDefault()
-})
 
 // Combine all onload functions
 window.onload = function () {

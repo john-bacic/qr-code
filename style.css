@@ -146,31 +146,36 @@ button:active {
 
 
 .message-display #scanned-message {
-    font-family: "Reenie Beanie", cursive;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 42px;
+  font-family: "Reenie Beanie", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 42px;
 
-    transform: rotate(-3deg);
+  transform: rotate(-3deg);
 
-    color: #0004e0;
-    margin: 48px auto;
-    max-width: 100%;
-    padding: 0 20px;
-   
-    box-sizing: border-box;
+  color: #0004e0;
+  margin: 48px auto;
+  max-width: 100%;
+  padding: 0 20px;
 
-    /* Prevent word breaking */
-    white-space: normal;
-    word-break: keep-all;
-    overflow-wrap: break-word;
+  box-sizing: border-box;
+
+  /* Prevent word breaking */
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 
 }
 
+.message-display.show #scanned-message {
+  opacity: 1;
+}
+
 .message-display {
-    transition: transform 0.3s ease;
-    transform-origin: center center;
-  }
+  transition: transform 0.3s ease;
+  transform-origin: center center;
+  
+}
 
 textarea {
     width: 95%;
@@ -179,6 +184,8 @@ textarea {
     font-size: 18px;
     padding: 10px;
     transition: all 0.3s ease;
+
+
 }
 
 textarea:focus {
@@ -281,6 +288,8 @@ textarea:focus {
     min-width: 100px;
     max-height: 45px;
     /* overflow: hidden;  */
+
+
   }
 
   .quick-reply:hover {
