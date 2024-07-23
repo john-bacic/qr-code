@@ -285,7 +285,7 @@ textarea:focus {
 
   .quick-reply:hover {
     transform: translateY(-10px); /* Move the button up on hover */
-    font-size: 22px;
+    font-size: 20px;
     padding-top: 8px;
     background-color: #ff0099;
     box-shadow: 1px 1px 0 #00000076;
