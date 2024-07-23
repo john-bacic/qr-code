@@ -2,6 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Shadows+Into+Light&display=swap');
 
+
+/* Disable text selection and copying on mobile devices */
+textarea, 
+textarea::selection {
+    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
 body {
     /* font-family: Arial, sans-serif; */
     font-family: "Reenie Beanie", cursive;
@@ -26,6 +36,10 @@ body {
     background-color: rgb(249, 255, 190);
     outline: none;  
     border: none;   
+    user-select: none;  /* Disable text selection */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 /* To ensure the outline doesn't appear when focused */
@@ -185,7 +199,10 @@ textarea {
     padding: 10px;
     transition: all 0.3s ease;
 
-
+    user-select: none;  /* Disable text selection */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 textarea:focus {
@@ -316,6 +333,11 @@ textarea:focus {
     /* padding: 12px 50px 12px 20px; */
     min-width: 120px;
     max-height: 45px;
+
+    user-select: none;  /* Disable text selection */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
   }
 
   .quick-reply:hover {
