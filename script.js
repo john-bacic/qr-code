@@ -321,6 +321,17 @@ function setupReplyButtons() {
   })
 }
 
+// prevent navigating back
+const element = document.querySelector('div')
+
+element.addEventListener('touchstart', (e) => {
+  // is not near edge of view, exit
+  if (e.pageX > 20 && e.pageX < window.innerWidth - 20) return
+
+  // prevent swipe to navigate back gesture
+  e.preventDefault()
+})
+
 // Combine all onload functions
 window.onload = function () {
   displayMessage()
