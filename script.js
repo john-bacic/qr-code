@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     element.style.transform = `rotate(${rotationAngle}deg)`
   }
 
-  // Function to handle quick replies
+  // Function to handle quick replies with a delay
   function setupQuickReplyButtons() {
     const quickReplyButtons = document.querySelectorAll('.quick-reply')
     const messageTextarea = document.getElementById('message')
@@ -15,12 +15,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
       button.addEventListener('click', function () {
         const text = button.getAttribute('data-text')
-        messageTextarea.value = text
+        // setTimeout(() => {
+        //   messageTextarea.value = text
+        // }, 500) // 0.5 second delay
       })
 
       button.addEventListener('touchend', function () {
         const text = button.getAttribute('data-text')
-        messageTextarea.value = text
+        // setTimeout(() => {
+        //   messageTextarea.value = text
+        // }, 500) // 0.5 second delay
       })
     })
   }
@@ -71,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 ///////////////////////////////
-// refactored
+// refactored 2 with delay
 /////////////// RANDOM QUESTION
 
 const questions = [
