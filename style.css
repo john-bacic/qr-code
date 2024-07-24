@@ -256,8 +256,19 @@ textarea:focus {
 }
 
 .fade-in {
-    animation: fadeIn 0.5s ease-in-out forwards;
+  animation: fadeIn 0.5s ease-in-out forwards;
 }
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+
 
 
   
@@ -388,6 +399,12 @@ textarea:focus {
 
 #replyContainer::-webkit-scrollbar {
     display: none;  /* Safari and Chrome */
+}
+
+
+
+#messageContainer {
+  transition: opacity 0.5s;
 }
 
 
