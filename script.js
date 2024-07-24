@@ -104,7 +104,6 @@ const questions = [
   "If your pet could suddenly speak, what's the first thing they'd probably say?",
   "What's the weirdest place you've ever fallen asleep?",
   'If you could rename yourself, what ridiculous name would you choose?',
-  "What's the most bizarre way you've ever tried to get out of doing homework?",
   'If you could swap bodies with any animal for a day, which one would it be?',
   'If your shoes could talk, what would they complain about most?',
   'If you could make any food rain from the sky, what would it be?',
