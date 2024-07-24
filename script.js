@@ -1,38 +1,49 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const quickReplyButtons = document.querySelectorAll('.quick-reply')
-  const messageTextarea = document.getElementById('message')
-  const qrCodeButton = document.querySelector("button[onclick='generateQR()']")
-  const newMessageButton = document.getElementById('new-message')
-
-  function getRandomRotation() {
-    return Math.floor(Math.random() * 7) - 3 // Generates a number between -3 and 3
+  // Function to apply random rotation
+  function applyRandomRotation(element) {
+    const rotationAngle = Math.floor(Math.random() * 7) - 3
+    element.style.transform = `rotate(${rotationAngle}deg)`
   }
 
-  function applyRandomRotation(button) {
-    const rotationAngle = getRandomRotation()
-    button.style.transform = `rotate(${rotationAngle}deg)`
+  // Function to handle quick replies
+  function setupQuickReplyButtons() {
+    const quickReplyButtons = document.querySelectorAll('.quick-reply')
+    const messageTextarea = document.getElementById('message')
+
+    quickReplyButtons.forEach((button) => {
+      applyRandomRotation(button)
+
+      button.addEventListener('click', function () {
+        const text = button.getAttribute('data-text')
+        messageTextarea.value = text
+      })
+
+      button.addEventListener('touchend', function () {
+        const text = button.getAttribute('data-text')
+        messageTextarea.value = text
+      })
+    })
   }
 
-  quickReplyButtons.forEach((button) => {
-    applyRandomRotation(button)
+  // Function to apply random rotation to QR code and new message buttons
+  function applyRandomRotationToButtons() {
+    const qrCodeButton = document.querySelector(
+      "button[onclick='generateQR()']"
+    )
+    const newMessageButton = document.getElementById('new-message')
 
-    function handleQuickReply(event) {
-      const button = event.currentTarget
-      const text = button.getAttribute('data-text')
-      messageTextarea.value = text // Set the textarea to the button's text
-    }
-
-    button.addEventListener('click', handleQuickReply)
-    button.addEventListener('touchend', handleQuickReply)
-  })
-
-  if (qrCodeButton) {
-    applyRandomRotation(qrCodeButton)
+    if (qrCodeButton) applyRandomRotation(qrCodeButton)
+    if (newMessageButton) applyRandomRotation(newMessageButton)
   }
 
-  if (newMessageButton) {
-    applyRandomRotation(newMessageButton)
+  // Setup all event listeners and initial setups
+  function initialize() {
+    setupQuickReplyButtons()
+    applyRandomRotationToButtons()
   }
+
+  // Initialize the setup
+  initialize()
 
   // Prevent double-tap to zoom
   document.addEventListener(
@@ -45,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function () {
     { passive: false }
   )
 
-  // Prevent double-tap to zoom by disabling double-click
   let lastTouchEnd = 0
   document.addEventListener(
     'touchend',
@@ -59,8 +69,9 @@ document.addEventListener('DOMContentLoaded', function () {
     false
   )
 })
-///////////////////////////////
 
+///////////////////////////////
+// refactored
 /////////////// RANDOM QUESTION
 
 const questions = [
@@ -161,15 +172,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 })
 
 //////////////////////////////
-
-// Function to update the message with fade-out and fade-in effects
-// function updateMessage(newMessage) {
-//   const messageElement = document.getElementById('message')
-//   addFadeOutEffect(messageElement, () => {
-//     messageElement.value = newMessage
-//     addFadeInEffect(messageElement)
-//   })
-// }
 
 // Example existing function that sets a random message
 function displayRandomQuestion() {
