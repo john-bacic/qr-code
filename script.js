@@ -15,16 +15,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
       button.addEventListener('click', function () {
         const text = button.getAttribute('data-text')
-        // setTimeout(() => {
-        //   messageTextarea.value = text
-        // }, 500) // 0.5 second delay
+        setTimeout(() => {
+          messageTextarea.value = text
+        }, 500) // 0.5 second delay
       })
 
       button.addEventListener('touchend', function () {
         const text = button.getAttribute('data-text')
-        // setTimeout(() => {
-        //   messageTextarea.value = text
-        // }, 500) // 0.5 second delay
+        setTimeout(() => {
+          messageTextarea.value = text
+        }, 500) // 0.5 second delay
       })
     })
   }
@@ -40,10 +40,38 @@ document.addEventListener('DOMContentLoaded', function () {
     if (newMessageButton) applyRandomRotation(newMessageButton)
   }
 
+  // Setup elastic effect for quick-reply buttons using GSAP
+  function setupElasticEffect() {
+    const replyContainer = document.getElementById('replyContainer')
+    const quickReplyButtons = document.querySelectorAll('.quick-reply')
+
+    Draggable.create(replyContainer, {
+      type: 'scrollLeft',
+      throwProps: true,
+      onThrowUpdate: function () {
+        const velocity =
+          this.getDirection() === 'left'
+            ? -this.getVelocity()
+            : this.getVelocity()
+        const scale = 1 + Math.abs(velocity) / 1000 // Adjust the scale factor as needed
+
+        quickReplyButtons.forEach((button) => {
+          gsap.to(button, { scale: Math.min(scale, 1.5), duration: 0.2 }) // Max scale of 1.5
+        })
+      },
+      onThrowComplete: function () {
+        quickReplyButtons.forEach((button) => {
+          gsap.to(button, { scale: 1, duration: 0.3 }) // Reset to normal scale
+        })
+      },
+    })
+  }
+
   // Setup all event listeners and initial setups
   function initialize() {
     setupQuickReplyButtons()
     applyRandomRotationToButtons()
+    setupElasticEffect()
   }
 
   // Initialize the setup
