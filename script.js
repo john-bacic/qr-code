@@ -162,23 +162,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 //////////////////////////////
 
-// Function to add fade-out effect
-function addFadeOutEffect(element, callback) {
-  element.classList.remove('fade-in')
-  element.classList.add('fade-out')
-  element.addEventListener('animationend', function handler() {
-    element.removeEventListener('animationend', handler)
-    if (callback) callback()
-  })
-}
-
-// Function to add fade-in effect
-function addFadeInEffect(element) {
-  element.classList.remove('fade-out')
-  void element.offsetWidth // Trigger reflow to restart animation
-  element.classList.add('fade-in')
-}
-
 // Function to update the message with fade-out and fade-in effects
 function updateMessage(newMessage) {
   const messageElement = document.getElementById('message')
