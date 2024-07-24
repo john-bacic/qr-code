@@ -163,13 +163,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
 //////////////////////////////
 
 // Function to update the message with fade-out and fade-in effects
-function updateMessage(newMessage) {
-  const messageElement = document.getElementById('message')
-  addFadeOutEffect(messageElement, () => {
-    messageElement.value = newMessage
-    addFadeInEffect(messageElement)
-  })
-}
+// function updateMessage(newMessage) {
+//   const messageElement = document.getElementById('message')
+//   addFadeOutEffect(messageElement, () => {
+//     messageElement.value = newMessage
+//     addFadeInEffect(messageElement)
+//   })
+// }
 
 // Example existing function that sets a random message
 function displayRandomQuestion() {
