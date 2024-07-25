@@ -207,7 +207,7 @@ function displayRandomQuestion() {
     'Shit ✨💩✨',
     'Cheers ✨🍻✨',
     'Drink ✨🍺✨',
-    "For fuck's sakes! ✨🙈✨",
+    "For fuck's sakes!      ✨🙈✨",
   ]
 
   const randomIndex = Math.floor(Math.random() * questions.length)
