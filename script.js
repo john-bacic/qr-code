@@ -187,6 +187,7 @@ function displayRandomQuestion() {
     'Maybe 🤔💭',
     'Later... TBD ⏲️✨',
     'Sure 👍✨',
+    'Oh My God! 🤯✨',
     'Good Morning 🌞✨',
     'Hello, what do you want? ✨👋',
     'Thanks 🙏✨',
