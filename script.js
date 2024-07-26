@@ -413,21 +413,21 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 // Function to prevent text copying
-function preventTextCopying() {
-  document.addEventListener('copy', function (e) {
-    e.preventDefault()
-  })
+// function preventTextCopying() {
+//   document.addEventListener('copy', function (e) {
+//     e.preventDefault()
+//   })
 
-  document.addEventListener('cut', function (e) {
-    e.preventDefault()
-  })
+//   document.addEventListener('cut', function (e) {
+//     e.preventDefault()
+//   })
 
-  document.addEventListener('contextmenu', function (e) {
-    e.preventDefault()
-  })
-}
+//   document.addEventListener('contextmenu', function (e) {
+//     e.preventDefault()
+//   })
+// }
 
 // Call the function to prevent text copying
-preventTextCopying()
+// preventTextCopying()
 
 // Modify existing code to use updateMessage function
