@@ -83,7 +83,7 @@ label {
 
 .new-message-btn {
     position: absolute; 
-    bottom: 20px; /* Adjust as necessary to position below the container */
+    bottom: 40px; /* Adjust as necessary to position below the container */
     /* left: 30%;  */
     transform: translate(-50%, 50%); /* Center the button by its center */
     white-space: nowrap; /* Prevents text breaking within the button */
@@ -372,7 +372,7 @@ textarea:focus {
 
   #replyContainer {
     position: fixed;
-    bottom: 0px;
+    bottom: 10px;
     z-index: 1000;
     display: flex;
     width: 100%;
