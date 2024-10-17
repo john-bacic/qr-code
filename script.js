@@ -9,31 +9,28 @@ document.addEventListener('DOMContentLoaded', function () {
   function setupQuickReplyButtons() {
     const quickReplyButtons = document.querySelectorAll('.quick-reply')
     const messageTextarea = document.getElementById('message')
+    const generateQRButton = document.getElementById('generateQRButton') // Ensure this is selected
 
     quickReplyButtons.forEach((button) => {
       applyRandomRotation(button)
 
       button.addEventListener('click', function () {
-        const text = button.getAttribute('data-text')
-        // setTimeout(() => {
-        //   messageTextarea.value = text
-        // }, 500) // 0.5 second delay
+        const text = this.getAttribute('data-text')
+        updateMessage(text)
+        toggleGenerateQRButton() // Ensure the button visibility is updated
       })
 
       button.addEventListener('touchend', function () {
-        const text = button.getAttribute('data-text')
-        // setTimeout(() => {
-        //   messageTextarea.value = text
-        // }, 500) // 0.5 second delay
+        const text = this.getAttribute('data-text')
+        updateMessage(text)
+        toggleGenerateQRButton() // Ensure the button visibility is updated
       })
     })
   }
 
   // Function to apply random rotation to QR code and new message buttons
   function applyRandomRotationToButtons() {
-    const qrCodeButton = document.querySelector(
-      "button[onclick='generateQR()']"
-    )
+    const qrCodeButton = document.getElementById('generateQRButton')
     const newMessageButton = document.getElementById('new-message')
 
     if (qrCodeButton) applyRandomRotation(qrCodeButton)
@@ -72,6 +69,25 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     false
   )
+
+  const messageTextarea = document.getElementById('message')
+  const generateQRButton = document.getElementById('generateQRButton') // Update with actual button ID
+
+  // Hide the generateQRButton by default
+  generateQRButton.style.display = 'none'
+
+  function toggleGenerateQRButton() {
+    const currentText = messageTextarea.value.trim()
+    const hasContent =
+      currentText !== '' && currentText !== 'Write something here!'
+    generateQRButton.style.display = hasContent ? 'inline-block' : 'none'
+  }
+
+  // Initial check
+  toggleGenerateQRButton()
+
+  // Listen for input changes
+  messageTextarea.addEventListener('input', toggleGenerateQRButton)
 })
 
 ///////////////////////////////
@@ -193,37 +209,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 // Example existing function that sets a random message
 function displayRandomQuestion() {
-  const questions = [
-    'What is your favourite colour?',
-    // 'Hey whatsup? ✨👋',
-    // 'Yes Yes & Yes 👍✨',
-    // '🚫 No nope nuh uh not even once never nada no comprende no abla negatory nein nill noooooooooOOOOOO!!!',
-    // 'Maybe 🤔💭',
-    // 'Later... TBD ⏲️✨',
-    // 'Sure 👍✨',
-    // 'Oh My God! 🤯✨',
-    // 'Good Morning 🌞✨',
-    // 'Hello, what do you want? ✨👋',
-    // 'Thanks 🙏✨',
-    // 'Great 🎉✨',
-    // 'Sorry 😢✨',
-    // 'Awesomely amazing ✨😎✨',
-    // 'Okay ✨👌',
-    // '✨❤️❤️❤️✨',
-    // '💋💋💋✨',
-    // "Cool let's do it! ✨😎✨",
-    // 'Agree ✨😉✨',
-    // 'Yes sir ✨🤬✨',
-    // 'No problem 🫠✨',
-    // 'Will do ✨🖕✨',
-    // 'Nice ✨😇✨',
-    // "Let's go ✨🚀",
-    // 'On it ✨🌵✨',
-    // 'Shit ✨💩✨',
-    // 'Cheers ✨🍻✨',
-    // 'Drink ✨🍺✨',
-    // "For fuck's sakes!      ✨🙈✨",
-  ]
+  const questions = ['What is your favourite colour?']
 
   const randomIndex = Math.floor(Math.random() * questions.length)
   updateMessage(questions[randomIndex])
@@ -425,23 +411,3 @@ document.addEventListener('DOMContentLoaded', function () {
     window.location.href = 'camera.html'
   })
 })
-
-// Function to prevent text copying
-// function preventTextCopying() {
-//   document.addEventListener('copy', function (e) {
-//     e.preventDefault()
-//   })
-
-//   document.addEventListener('cut', function (e) {
-//     e.preventDefault()
-//   })
-
-//   document.addEventListener('contextmenu', function (e) {
-//     e.preventDefault()
-//   })
-// }
-
-// Call the function to prevent text copying
-// preventTextCopying()
-
-// Modify existing code to use updateMessage function
