@@ -185,11 +185,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   let lastRandom = 0
   function handleRandom(e) {
+    e.stopImmediatePropagation()
+    e.preventDefault()
+
     const now = Date.now()
     if (now - lastRandom < 300) return
     lastRandom = now
-    e.stopImmediatePropagation()
-    e.preventDefault()
 
     if (currentIndex >= shuffledQuestions.length) {
       shuffledQuestions = shuffleArray(questions.slice())
