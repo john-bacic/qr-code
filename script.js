@@ -1,3 +1,7 @@
+const RAND_BUTTON = document.querySelector(
+  '.quick-reply[data-text^="What is is your favourite colour?"]'
+)
+
 document.addEventListener('DOMContentLoaded', function () {
   // Function to apply random rotation
   function applyRandomRotation(element) {
@@ -9,21 +13,23 @@ document.addEventListener('DOMContentLoaded', function () {
   function setupQuickReplyButtons() {
     const quickReplyButtons = document.querySelectorAll('.quick-reply')
     const messageTextarea = document.getElementById('message')
-    const generateQRButton = document.getElementById('generateQRButton') // Ensure this is selected
+    const generateQRButton = document.getElementById('generateQRButton')
 
     quickReplyButtons.forEach((button) => {
       applyRandomRotation(button)
 
+      if (button === RAND_BUTTON) return
+
       button.addEventListener('click', function () {
         const text = this.getAttribute('data-text')
         updateMessage(text)
-        toggleGenerateQRButton() // Ensure the button visibility is updated
+        toggleGenerateQRButton()
       })
 
       button.addEventListener('touchend', function () {
         const text = this.getAttribute('data-text')
         updateMessage(text)
-        toggleGenerateQRButton() // Ensure the button visibility is updated
+        toggleGenerateQRButton()
       })
     })
   }
@@ -179,13 +185,8 @@ function shuffleArray(array) {
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
-  const randButton = document.querySelector(
-    '.quick-reply[data-text^="What is is your favourite colour?"]'
-  )
-
   let lastRandom = 0
   function handleRandom(e) {
-    e.stopImmediatePropagation()
     e.preventDefault()
 
     const now = Date.now()
@@ -206,8 +207,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
   }
 
-  randButton.addEventListener('touchend', handleRandom, true)
-  randButton.addEventListener('click', handleRandom, true)
+  RAND_BUTTON.addEventListener('touchend', handleRandom)
+  RAND_BUTTON.addEventListener('click', handleRandom)
 })
 
 //////////////////////////////
@@ -220,8 +221,8 @@ function displayRandomQuestion() {
   updateMessage(questions[randomIndex])
 }
 
-// Example of attaching event listeners to quick-reply buttons
 document.querySelectorAll('.quick-reply').forEach((button) => {
+  if (button === RAND_BUTTON) return
   button.addEventListener('click', () => {
     const newMessage = button.getAttribute('data-text')
     updateMessage(newMessage)
@@ -389,11 +390,11 @@ function setupReplyButtons() {
   const messageInput = document.getElementById('message')
 
   replyButtons.forEach((button) => {
+    if (button === RAND_BUTTON) return
     button.addEventListener('click', function () {
       const text = this.getAttribute('data-text')
       messageInput.value = text
 
-      // Trigger input event to simulate user typing
       const event = new Event('input', { bubbles: true })
       messageInput.dispatchEvent(event)
     })
