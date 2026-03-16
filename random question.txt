@@ -1,0 +1,168 @@
+Got it! Here are 20 questions with a fun and lighthearted tone that you can ask in a group of friends:
+
+What's your most embarrassing moment?
+If you could swap lives with anyone for a day, who would it be?
+What's the weirdest thing you've ever eaten?
+Have you ever had a paranormal experience?
+What's your go-to karaoke song?
+What's a guilty pleasure you have?
+If you could have any superpower, what would it be?
+What's the craziest thing you've ever done on a dare?
+What's the best prank you've ever pulled?
+What's your favorite thing to do on a weekend?
+Have you ever met a celebrity?
+What's the worst job you've ever had?
+If you could only eat one food for the rest of your life, what would it be?
+What's a weird talent you have?
+What's the most spontaneous thing you've ever done?
+What's your favorite childhood TV show?
+If you won the lottery, what's the first thing you'd buy?
+What's the strangest dream you've ever had?
+Have you ever gotten a tattoo or piercing on a whim?
+What's the funniest thing that's happened to you recently?
+
+
+
+What's your most embarrassing moment?
+If you could swap lives with anyone for a day, who would it be?
+What's the weirdest thing you've ever eaten?
+Have you ever had a paranormal experience?
+What's your go-to karaoke song?
+What's a guilty pleasure you have?
+If you could have any superpower, what would it be?
+What's the craziest thing you've ever done on a dare?
+What's the best prank you've ever pulled?
+What's your favorite thing to do on a weekend?
+Have you ever met a celebrity?
+What's the worst job you've ever had?
+If you could only eat one food for the rest of your life, what would it be?
+What's a weird talent you have?
+What's the most spontaneous thing you've ever done?
+What's your favorite childhood TV show?
+If you won the lottery, what's the first thing you'd buy?
+What's the strangest dream you've ever had?
+Have you ever gotten a tattoo or piercing on a whim?
+What's the funniest thing that's happened to you recently?
+
+
+
+
+
+Sure, here are 20 questions with a more intimate and sexual tone:
+
+What's your favorite memory of us in bed?
+What's a secret fantasy of yours?
+What turns you on the most?
+What's the most adventurous thing you've ever done sexually?
+How do you like to be touched?
+What's something new you'd like to try in bed?
+What's your favorite part of my body?
+What's the sexiest thing I've ever done for you?
+What's your favorite position?
+How do you feel about role-playing?
+What's the wildest place you've ever had sex?
+What kind of dirty talk do you like?
+What's something you've always wanted to do but haven't tried yet?
+How do you feel about using toys in bed?
+What's a sexual experience you fantasize about?
+What's your biggest turn-off?
+What's something I do that drives you wild?
+How do you feel about watching adult films together?
+What's the most intense orgasm you've ever had?
+How can I make sex even better for you?
+
+
+
+Sure! Here are those questions in a more casual tone:
+
+What's the most embarrassing thing that's ever happened to you?
+If you could be anyone else for a day, who would you choose?
+What's the weirdest food you've ever tried?
+Ever had a spooky ghost encounter?
+What's your go-to karaoke jam?
+What's your guilty pleasure TV show or movie?
+If you could have any superpower, what would it be?
+What's the craziest dare you've ever done?
+What's the best prank you've ever pulled off?
+What's your favorite way to spend the weekend?
+Ever met a celebrity? Who was it?
+What's the worst job you've ever had?
+If you could only eat one food forever, what would it be?
+Got any weird talents?
+What's the most spontaneous thing you've ever done?
+What was your favorite TV show as a kid?
+If you won the lottery, what's the first thing you'd buy?
+What's the strangest dream you've ever had?
+Ever gotten a tattoo or piercing on a whim?
+What's the funniest thing that's happened to you lately?
+
+
+
+to 5 year old:
+What's the silliest thing that's ever happened to you?
+If you could be anyone else for a day, who would you pick?
+What's the weirdest food you've ever tried?
+Have you ever seen a ghost or something spooky?
+What's your favorite song to sing along to?
+What's your favorite TV show or movie to watch over and over?
+If you could have any superpower, what would it be?
+What's the funniest dare you've ever done?
+What's the best joke or trick you've ever played on someone?
+What's your favorite thing to do on the weekend?
+Have you ever met someone famous? Who was it?
+What's the worst chore you've ever had to do?
+If you could eat only one food forever, what would it be?
+Do you have any funny talents?
+What's the most fun thing you've ever done without planning?
+What was your favorite cartoon or TV show as a little kid?
+If you found a treasure chest full of money, what's the first thing you'd buy?
+What's the weirdest dream you've ever had?
+Have you ever gotten a funny sticker or drawing on you?
+What's the funniest thing that happened to you recently?
+
+
+
+const questions = [
+  'What did you have for breakfast this morning?',
+  'What is the most embarrassing thing that has ever happened to you?',
+  'If you could be anyone else for a day, who would you choose?',
+  "What's the weirdest food you've ever tried?",
+  "What's your favorite TV show or movie these days?",
+  'If you could have any superpower, what would it be?',
+  "What's the craziest dare you've ever done?",
+  "What's the best prank you've ever pulled?",
+  "What's your favorite way to spend the weekend?",
+  'Ever met a celebrity? Who was it?',
+  "What's the worst job you've ever had?",
+  'If you could only eat one food forever, what would it be?',
+  'Got any weird talents?',
+  "What's the most spontaneous thing you've ever done?",
+  'What was your favorite TV show as a kid?',
+  "If you won the lottery, what's the first thing you'd buy?",
+  "What's the strangest dream you've ever had?",
+  "What's the funniest thing that's happened to you lately?",
+  "What's the silliest thing that's ever happened to you?",
+  'If you could be anyone else for a day, who would you pick?',
+  'Have you ever seen a ghost or something spooky?',
+  "What's your favorite song to sing along to?",
+  "What's the most fun thing you've ever done without planning?",
+  "What's the weirdest thing you've ever eaten for breakfast?",
+  'If you could time travel, where would you go?',
+  "What's the funniest thing your pet has ever done?",
+  'If you could instantly become an expert in something, what would it be?',
+  "What's the most unusual thing you've ever collected?",
+  'If you could switch lives with a fictional character, who would it be?',
+  "What's the best costume you've ever worn?",
+  "What's the most awkward thing that's happened to you on a date?",
+  'If you could live in any era, which one would you choose?',
+  "What's the funniest text you've ever received?",
+  'If you could have dinner with any historical figure, who would it be?',
+  "What's the most creative excuse you've ever made up?",
+  "What's your go-to dance move?",
+  'If you could only listen to one song for the rest of your life, what would it be?',
+  "What's the most adventurous thing you've ever done?",
+  'If you could be famous for one thing, what would it be?',
+  "What's the most ridiculous fact you know?",
+  "What's the weirdest talent you have?",
+  'If you could teleport anywhere right now, where would you go?',
+]

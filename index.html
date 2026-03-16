@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>QR Code Messenger</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.3.1/dist/jsQR.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/Draggable.min.js"></script>
+    <link rel="manifest" href="https://raw.githubusercontent.com/john-bacic/qr-code/refs/heads/main/manifest.json">
+    
+    <!-- Add these tags for iOS full-screen -->
+    <link rel="apple-touch-icon" href="icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+    <div id="cameraContainer">
+        <input type="file" id="cameraInput" accept="image/*, video/*" capture="environment" style="display: none;">
+        <button id="openCamera">
+            <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5.82422 1.24464L5.41797 2.42857H2.5C1.12109 2.42857 0 3.51763 0 4.85714V14.5714C0 15.9109 1.12109 17 2.5 17H17.5C18.8789 17 20 15.9109 20 14.5714V4.85714C20 3.51763 18.8789 2.42857 17.5 2.42857H14.582L14.1758 1.24464C13.9219 0.500893 13.207 0 12.3984 0H7.60156C6.79297 0 6.07813 0.500893 5.82422 1.24464ZM10 6.07143C10.9946 6.07143 11.9484 6.45523 12.6517 7.1384C13.3549 7.82157 13.75 8.74814 13.75 9.71429C13.75 10.6804 13.3549 11.607 12.6517 12.2902C11.9484 12.9733 10.9946 13.3571 10 13.3571C9.00544 13.3571 8.05161 12.9733 7.34835 12.2902C6.64509 11.607 6.25 10.6804 6.25 9.71429C6.25 8.74814 6.64509 7.82157 7.34835 7.1384C8.05161 6.45523 9.00544 6.07143 10 6.07143Z" fill="#F6FF00"/>
+            </svg>
+        </button>
+    </div>
+
+    <div class="container">
+        <div id="message-input">
+            <textarea id="message" placeholder="Write something here!"></textarea>
+            <!-- <button onclick="generateQR()">Show It</button> -->
+             <button id="generateQRButton" onclick="generateQR()">Show It</button>
+
+        <!-- Add an ID to the Show It button -->
+        <!-- <button id="generateQRButton" onclick="generateQR()">Show It</button> -->
+
+        </div>
+     
+
+        <div id="qr-code"></div>
+   
+
+
+    </div>
+
+    <button id="new-message" onclick="newMessage()" style="display: none;" class="new-message-btn">New Message</button>
+
+
+    <div id="replyContainer">
+        <!-- <button class="quick-reply" data-text="Random question!   (#$%&*!^&#!@$%#$%&*!^&$%?)">Random?</button> -->
+        <!-- <button class="quick-reply" data-text="🎲 Random question:  (##################################?!)">Random?</button> -->
+        <button class="quick-reply" data-text="What is is your favourite colour?">Rand <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.53843 4.14185L9.57417 4.17886H8.86229C8.2583 4.17886 7.78475 4.68211 7.78475 5.28591C7.78475 5.8897 8.2583 6.39295 8.86229 6.39295H12.1725C12.7764 6.39295 13.25 5.8897 13.25 5.28591V1.85772C13.25 1.25392 12.7764 0.75067 12.1725 0.75067C11.5685 0.75067 11.0949 1.25392 11.0949 1.85772V2.61017L11.0696 2.58396C8.70851 0.138679 4.87836 0.138679 2.51726 2.58396C0.160913 5.02433 0.160913 8.97567 2.51726 11.416C4.87836 13.8613 8.70851 13.8613 11.0696 11.416C11.4864 10.9844 11.4864 10.2871 11.0696 9.85547C10.6481 9.41889 9.95998 9.41889 9.53843 9.85547C8.02043 11.4276 5.56386 11.4276 4.04586 9.85547C2.5231 8.27843 2.5231 5.71889 4.04586 4.14185C5.56386 2.56972 8.02043 2.56972 9.53843 4.14185Z" fill="#FFFB00" stroke="#FFFB00" stroke-width="0.5"/>
+            </svg>
+        </button>
+        <button class="quick-reply" data-text="Ask Me Anything❓">AMA</button>
+        <button class="quick-reply" data-text="Before Anyone Else ❤️">Bae</button>
+        <button class="quick-reply" data-text="Be Back In A Bit ⏳">BBIAB</button>
+        <button class="quick-reply" data-text="Best Friends Forever 👯‍♀️">BFF</button>
+        <button class="quick-reply" data-text="Be Right Back ⏳">BRB</button>
+        <button class="quick-reply" data-text="By The Way ➡️">BTW</button>
+        <button class="quick-reply" data-text="Be That As It May 🤷">BTAIM</button>
+        <button class="quick-reply" data-text="Can't Talk Now 🤐">CTN</button>
+        <button class="quick-reply" data-text="Check Your Email 📧">CYE</button>
+        <button class="quick-reply" data-text="Direct Message 📩">DM</button>
+        <button class="quick-reply" data-text="For F***'s Sake 😤">FFS</button>
+        <button class="quick-reply" data-text="Fear Of Missing Out 😬">FOMO</button>
+        <button class="quick-reply" data-text="For The Win 🏆">FTW</button>
+        <button class="quick-reply" data-text="Friends With Benefits 😏">FWB</button>
+        <button class="quick-reply" data-text="For What It's Worth 💭">FWIW</button>
+        <button class="quick-reply" data-text="For Your Information ℹ️">FYI</button>
+        <button class="quick-reply" data-text="Good Game 🎮">GG</button>
+        <button class="quick-reply" data-text="Good Luck 🍀">GL</button>
+        <button class="quick-reply" data-text="Got My Vote 🗳️">GMV</button>
+        <button class="quick-reply" data-text="Got To Go 🚶">GTG</button>
+        <button class="quick-reply" data-text="Hope This Helps 🙏">HTH</button>
+        <button class="quick-reply" data-text="I See 👀">IC</button>
+        <button class="quick-reply" data-text="In Case You Didn't Know 💡">ICYDK</button>
+        <button class="quick-reply" data-text="In Case You Missed It 📰">ICYMI</button>
+        <button class="quick-reply" data-text="I Don't Care 🙄">IDC</button>
+        <button class="quick-reply" data-text="I Don't Know 🤔">IDK</button>
+        <button class="quick-reply" data-text="I Know, Right? 😅">IKR</button>
+        <button class="quick-reply" data-text="In My Humble Opinion 🤔">IMHO</button>
+        <button class="quick-reply" data-text="In Real Life 🌏">IRL</button>
+        <button class="quick-reply" data-text="Just Kidding 😜">JK</button>
+        <button class="quick-reply" data-text="Just So You Know 🤓">JSYK</button>
+        <button class="quick-reply" data-text="Okay 👍">K</button>
+        <button class="quick-reply" data-text="Later 👋">L8R</button>
+        <button class="quick-reply" data-text="Laughing My A** Off 😂">LMAO</button>
+        <button class="quick-reply" data-text="Let Me Know 📲">LMK</button>
+        <button class="quick-reply" data-text="Laugh Out Loud 😆">LOL</button>
+        <button class="quick-reply" data-text="Maybe 🤔">MB</button>
+        <button class="quick-reply" data-text="Maybe, Maybe Not 🤷">MMB</button>
+        <button class="quick-reply" data-text="Mind Your Own Business 🚫">MYOB</button>
+        <button class="quick-reply" data-text="🚫 No nope nuh uh not even once never nada no comprende no abla negatory nein nill noooooooooOOOOOO!!!">N</button>
+        <button class="quick-reply" data-text="No Comment 🤐">NC</button>
+        <button class="quick-reply" data-text="No Big Deal 🤷‍♂️">NBD</button>
+        <button class="quick-reply" data-text="Newbie 👶">NOOB</button>
+        <button class="quick-reply" data-text="Not Safe For Work 🚫">NSFW</button>
+        <button class="quick-reply" data-text="Never Mind 😌">NVM</button>
+        <button class="quick-reply" data-text="Oh My Gosh 😲">OMG</button>
+        <button class="quick-reply" data-text="Off Topic 🗨️">OT</button>
+        <button class="quick-reply" data-text="One True Pairing ❤️">OTP</button>
+        <button class="quick-reply" data-text="Please 🙏">Pls</button>
+        <button class="quick-reply" data-text="Cutie 😊">Qt</button>
+        <button class="quick-reply" data-text="Right Now 🕒">RN</button>
+        <button class="quick-reply" data-text="Rolling On the Floor Laughing 🤣">ROFL</button>
+        <button class="quick-reply" data-text="Safe For Work ✔️">SFW</button>
+        <button class="quick-reply" data-text="Shaking My Head 🤦">SMH</button>
+        <button class="quick-reply" data-text="Sorry 😔">Sry</button>
+        <button class="quick-reply" data-text="Shut The F*** Up 🤐">STFU</button>
+        <button class="quick-reply" data-text="Suspect 🕵️">SUS</button>
+        <button class="quick-reply" data-text="To Be Honest 🗣️">TBH</button>
+        <button class="quick-reply" data-text="Thanks 🙏">THX</button>
+        <button class="quick-reply" data-text="Too Much Information 🤯">TMI</button>
+        <button class="quick-reply" data-text="Ta Ta For Now 👋">TTFN</button>
+        <button class="quick-reply" data-text="Talk To You Later 💬">TTYL</button>
+        <button class="quick-reply" data-text="Thank You 🙏">TY</button>
+        <button class="quick-reply" data-text="Wait ⏳">W8</button>
+        <button class="quick-reply" data-text="Whatever 🙄">w/e</button>
+        <button class="quick-reply" data-text="Why Not 🤷">WNt</button>
+        <button class="quick-reply" data-text="What You Doing? 👀">WYD</button>
+        <button class="quick-reply" data-text="Yes Yes Yes 👍✨">Y</button>
+        <button class="quick-reply" data-text="You Only Live Once 🌟">YOLO</button>
+        <button class="quick-reply" data-text="Sleeping 😴">ZZZ</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!-- better icons -->
+
